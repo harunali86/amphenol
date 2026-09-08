@@ -91,13 +91,15 @@ export function ProductQuickViewModal() {
     const cx = 100;
     const cy = 100;
     const pins: { id: number; x: number; y: number; size: number }[] = [];
+    // Round to 2dp to prevent SSR/client hydration mismatch
+    const rd = (n: number) => Math.round(n * 100) / 100;
 
     if (count <= 15) {
       // 1-ring layout
       const r = 45;
       for (let i = 0; i < count; i++) {
         const angle = (i * 2 * Math.PI) / count - Math.PI / 2;
-        pins.push({ id: i + 1, x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle), size: 4.5 });
+        pins.push({ id: i + 1, x: rd(cx + r * Math.cos(angle)), y: rd(cy + r * Math.sin(angle)), size: 4.5 });
       }
     } else if (count <= 40) {
       // 2-ring layout
@@ -108,11 +110,11 @@ export function ProductQuickViewModal() {
       let id = 1;
       for (let i = 0; i < count1; i++) {
         const angle = (i * 2 * Math.PI) / count1 - Math.PI / 2;
-        pins.push({ id: id++, x: cx + r1 * Math.cos(angle), y: cy + r1 * Math.sin(angle), size: 3.5 });
+        pins.push({ id: id++, x: rd(cx + r1 * Math.cos(angle)), y: rd(cy + r1 * Math.sin(angle)), size: 3.5 });
       }
       for (let i = 0; i < count2; i++) {
         const angle = (i * 2 * Math.PI) / count2 - Math.PI / 2;
-        pins.push({ id: id++, x: cx + r2 * Math.cos(angle), y: cy + r2 * Math.sin(angle), size: 3.5 });
+        pins.push({ id: id++, x: rd(cx + r2 * Math.cos(angle)), y: rd(cy + r2 * Math.sin(angle)), size: 3.5 });
       }
     } else {
       // 3-ring layout
@@ -125,15 +127,15 @@ export function ProductQuickViewModal() {
       let id = 1;
       for (let i = 0; i < count1; i++) {
         const angle = (i * 2 * Math.PI) / count1 - Math.PI / 2;
-        pins.push({ id: id++, x: cx + r1 * Math.cos(angle), y: cy + r1 * Math.sin(angle), size: 3 });
+        pins.push({ id: id++, x: rd(cx + r1 * Math.cos(angle)), y: rd(cy + r1 * Math.sin(angle)), size: 3 });
       }
       for (let i = 0; i < count2; i++) {
         const angle = (i * 2 * Math.PI) / count2 - Math.PI / 2;
-        pins.push({ id: id++, x: cx + r2 * Math.cos(angle), y: cy + r2 * Math.sin(angle), size: 3 });
+        pins.push({ id: id++, x: rd(cx + r2 * Math.cos(angle)), y: rd(cy + r2 * Math.sin(angle)), size: 3 });
       }
       for (let i = 0; i < count3; i++) {
         const angle = (i * 2 * Math.PI) / count3 - Math.PI / 2;
-        pins.push({ id: id++, x: cx + r3 * Math.cos(angle), y: cy + r3 * Math.sin(angle), size: 3 });
+        pins.push({ id: id++, x: rd(cx + r3 * Math.cos(angle)), y: rd(cy + r3 * Math.sin(angle)), size: 3 });
       }
     }
 

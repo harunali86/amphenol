@@ -101,18 +101,20 @@ export function ExecutiveOverview() {
     const pins: { id: number; x: number; y: number; size: number }[] = [];
     const cx = 110;
     const cy = 110;
+    // Round to 2 decimal places to prevent SSR/client hydration mismatch
+    const r2 = (n: number) => Math.round(n * 100) / 100;
 
     if (shell === "11") {
       pins.push({ id: 1, x: cx, y: cy, size: 5 });
       const r1 = 38;
       for (let i = 0; i < 5; i++) {
         const angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
-        pins.push({ id: i + 2, x: cx + r1 * Math.cos(angle), y: cy + r1 * Math.sin(angle), size: 4.5 });
+        pins.push({ id: i + 2, x: r2(cx + r1 * Math.cos(angle)), y: r2(cy + r1 * Math.sin(angle)), size: 4.5 });
       }
-      const r2 = 68;
+      const r2Ring = 68;
       for (let i = 0; i < 7; i++) {
         const angle = (i * 2 * Math.PI) / 7 - Math.PI / 2;
-        pins.push({ id: i + 7, x: cx + r2 * Math.cos(angle), y: cy + r2 * Math.sin(angle), size: 4.5 });
+        pins.push({ id: i + 7, x: r2(cx + r2Ring * Math.cos(angle)), y: r2(cy + r2Ring * Math.sin(angle)), size: 4.5 });
       }
     } else if (shell === "15") {
       pins.push({ id: 1, x: cx, y: cy, size: 4.5 });
@@ -125,7 +127,7 @@ export function ExecutiveOverview() {
       rings.forEach((ring) => {
         for (let i = 0; i < ring.count; i++) {
           const angle = (i * 2 * Math.PI) / ring.count - Math.PI / 2;
-          pins.push({ id: id++, x: cx + ring.r * Math.cos(angle), y: cy + ring.r * Math.sin(angle), size: 4 });
+          pins.push({ id: id++, x: r2(cx + ring.r * Math.cos(angle)), y: r2(cy + ring.r * Math.sin(angle)), size: 4 });
         }
       });
     } else if (shell === "19") {
@@ -139,7 +141,7 @@ export function ExecutiveOverview() {
       rings.forEach((ring) => {
         for (let i = 0; i < ring.count; i++) {
           const angle = (i * 2 * Math.PI) / ring.count - Math.PI / 2;
-          pins.push({ id: id++, x: cx + ring.r * Math.cos(angle), y: cy + ring.r * Math.sin(angle), size: 3.5 });
+          pins.push({ id: id++, x: r2(cx + ring.r * Math.cos(angle)), y: r2(cy + ring.r * Math.sin(angle)), size: 3.5 });
         }
       });
     } else {
@@ -154,7 +156,7 @@ export function ExecutiveOverview() {
       rings.forEach((ring) => {
         for (let i = 0; i < ring.count; i++) {
           const angle = (i * 2 * Math.PI) / ring.count - Math.PI / 2;
-          pins.push({ id: id++, x: cx + ring.r * Math.cos(angle), y: cy + ring.r * Math.sin(angle), size: 3 });
+          pins.push({ id: id++, x: r2(cx + ring.r * Math.cos(angle)), y: r2(cy + ring.r * Math.sin(angle)), size: 3 });
         }
       });
     }
