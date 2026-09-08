@@ -110,7 +110,7 @@ export function AiAdvisorDrawer() {
       />
 
       {/* Sliding Drawer */}
-      <div className="relative flex h-full w-full max-w-xl flex-col border-l border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900 transition-all">
+      <div className="relative flex h-full w-full sm:max-w-xl flex-col border-l border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900 transition-all">
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-slate-200 bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 px-5 py-4 text-white shadow-sm">
           <div className="flex items-center gap-3">
@@ -146,7 +146,7 @@ export function AiAdvisorDrawer() {
         </div>
 
         {/* Chat Messages Body */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4">
           {messages.map((m) => (
             <div
               key={m.id}
@@ -272,7 +272,7 @@ export function AiAdvisorDrawer() {
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
             Quick Prompts (Click to test):
           </span>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {quickPrompts.map((p, idx) => (
               <button
                 key={idx}
@@ -286,7 +286,7 @@ export function AiAdvisorDrawer() {
         </div>
 
         {/* Chat Input Bar */}
-        <div className="border-t border-slate-200 p-4 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div className="border-t border-slate-200 p-3 sm:p-4 dark:border-slate-800 bg-white dark:bg-slate-900">
           <form
             onSubmit={(e) => {
               e.preventDefault();

@@ -501,7 +501,7 @@ END-ISO-10303-21;`;
 
             {/* Assembled Part Number with Copy Action */}
             <div className="mt-4 bg-slate-50 p-4 border border-slate-300 text-center relative group">
-              <div className="font-mono text-lg sm:text-xl font-black tracking-widest text-[#002855]">
+              <div className="font-mono text-base sm:text-xl font-black tracking-wider text-[#002855] break-all sm:break-normal">
                 {generatedMpn}
               </div>
               <p className="text-[11px] text-slate-500 mt-1 font-medium">
@@ -510,7 +510,7 @@ END-ISO-10303-21;`;
 
               <button
                 onClick={handleCopy}
-                className="mt-2.5 inline-flex items-center gap-1.5 border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 hover:border-[#002855] hover:text-[#002855] transition-colors"
+                className="mt-2.5 inline-flex items-center gap-1.5 border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 hover:border-[#002855] hover:text-[#002855] transition-colors cursor-pointer"
               >
                 {copiedMpn ? (
                   <>
@@ -527,7 +527,7 @@ END-ISO-10303-21;`;
             </div>
 
             {/* Syntax Breakdown Token Pills */}
-            <div className="mt-4 grid grid-cols-4 gap-1.5 text-[11px] font-mono text-center">
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[11px] font-mono text-center">
               <div className="bg-slate-100 p-1.5 border border-slate-200">
                 <span className="text-[#002855] font-bold">/{shellStyle.code}</span>
                 <p className="text-[9px] text-slate-500 font-sans">Shell Type</p>

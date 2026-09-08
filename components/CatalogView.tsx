@@ -42,6 +42,7 @@ export function CatalogView() {
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [copiedMpn, setCopiedMpn] = useState<string | null>(null);
   const [addedItemNotice, setAddedItemNotice] = useState<string | null>(null);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
   const categories = [
     { id: "all", label: "All Product Lines" },
@@ -185,10 +186,37 @@ export function CatalogView() {
         )}
       </div>
 
+      {/* Mobile Filter Toggle Bar (Visible only on < lg screens) */}
+      <div className="lg:hidden flex items-center justify-between border border-slate-300 bg-white p-3 shadow-xs">
+        <button
+          type="button"
+          onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+          className="flex items-center gap-2 text-xs font-bold text-[#002855] uppercase tracking-wider cursor-pointer"
+        >
+          <Filter className="h-4 w-4 text-[#002855]" />
+          <span>{isMobileFiltersOpen ? "Hide Filters" : "Filter 15,000+ SKUs"}</span>
+          <span className="bg-[#002855] text-white text-[10px] px-2 py-0.5 rounded-2xs font-mono font-bold">
+            {filteredProducts.length} Results
+          </span>
+        </button>
+        <button
+          type="button"
+          onClick={resetFilters}
+          className="flex items-center gap-1 text-[11px] font-semibold text-blue-700 hover:underline cursor-pointer"
+        >
+          <RotateCcw className="h-3 w-3" />
+          <span>Reset</span>
+        </button>
+      </div>
+
       {/* Main Layout: Left Parametric Sidebar + Right Product List */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Sidebar: Parametric Filters (Mouser / DigiKey Format) */}
-        <div className="lg:col-span-3 space-y-4 border border-slate-300 bg-white p-4 shadow-xs">
+        <div
+          className={`${
+            isMobileFiltersOpen ? "block" : "hidden"
+          } lg:block lg:col-span-3 space-y-4 border border-slate-300 bg-white p-4 shadow-xs`}
+        >
           <div className="flex items-center justify-between pb-3 border-b border-slate-200">
             <div className="flex items-center gap-2">
               <Filter className="h-4 w-4 text-[#002855]" />

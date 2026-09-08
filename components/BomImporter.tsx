@@ -159,11 +159,11 @@ export function BomImporter() {
   return (
     <div className="space-y-6 font-sans">
       {/* Header Banner */}
-      <div className="border border-slate-300 bg-white p-5 shadow-xs">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="border border-slate-300 bg-white p-3 sm:p-5 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
-              <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-[#002855]">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black uppercase tracking-tight text-[#002855]">
                 Upload Required Products List (BOM Excel / CSV)
               </h2>
               <span className="bg-[#002855] text-white px-2.5 py-0.5 text-xs font-mono font-bold tracking-wider">
@@ -200,9 +200,9 @@ export function BomImporter() {
       {bomRows.length === 0 && (
         <div
           onClick={loadAerospaceSample}
-          className="group cursor-pointer border-2 border-dashed border-slate-300 bg-white p-12 text-center transition-all hover:border-[#002855] hover:bg-slate-50"
+          className="group cursor-pointer border-2 border-dashed border-slate-300 bg-white p-6 sm:p-12 text-center transition-all hover:border-[#002855] hover:bg-slate-50"
         >
-          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-blue-50 border border-blue-200 group-hover:scale-105 transition-transform">
+          <div className="mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center bg-blue-50 border border-blue-200 group-hover:scale-105 transition-transform">
             <UploadCloud className="h-7 w-7 text-[#002855]" />
           </div>
           <h3 className="mt-4 text-base font-bold text-slate-900">
@@ -375,20 +375,21 @@ export function BomImporter() {
                 100% verified Amphenol India replacements with MIL-SPEC QPL certification.
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
                 <button
                   onClick={() => setBomRows([])}
-                  className="border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer w-full sm:w-auto"
                 >
                   Clear BOM
                 </button>
 
                 <button
                   onClick={handleTransferAllToRfq}
-                  className="flex items-center gap-1.5 bg-[#002855] hover:bg-[#001D3D] px-5 py-2 text-xs font-bold text-white shadow-xs active:scale-98 transition-all cursor-pointer"
+                  className="flex items-center justify-center gap-1.5 bg-[#002855] hover:bg-[#001D3D] px-5 py-2 text-xs font-bold text-white shadow-xs active:scale-98 transition-all cursor-pointer w-full sm:w-auto"
                 >
                   <Plus className="h-4 w-4" />
-                  <span>Transfer All Matched Parts to RFQ Cart</span>
+                  <span className="hidden sm:inline">Transfer All Matched Parts to RFQ Cart</span>
+                  <span className="sm:hidden">Transfer All to RFQ</span>
                 </button>
               </div>
             </div>

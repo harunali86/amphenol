@@ -315,7 +315,7 @@ export function RfqModal() {
       {/* Modal Container */}
       <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-sm border border-blue-900/40 bg-white shadow-2xl overflow-hidden my-auto rfq-modal-window">
         {/* Header Bar */}
-        <div className="flex items-center justify-between border-b border-slate-200 bg-[#001D3D] text-white px-6 py-3.5 no-print">
+        <div className="flex items-center justify-between border-b border-slate-200 bg-[#001D3D] text-white px-3 sm:px-6 py-3 sm:py-3.5 no-print">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xs bg-blue-600/40 border border-blue-400/40 text-amber-300">
               <Building2 className="h-5 w-5" />
@@ -344,7 +344,7 @@ export function RfqModal() {
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-slate-50 rfq-modal-body">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 bg-slate-50 rfq-modal-body">
           {items.length === 0 ? (
             <div className="py-16 text-center text-slate-500 bg-white border border-slate-200 rounded-xs p-8">
               <FileCheck className="mx-auto h-12 w-12 text-slate-300 stroke-1 mb-2" />
@@ -412,7 +412,7 @@ export function RfqModal() {
 
               {/* Part Items Table */}
               <div className="bg-white border border-slate-200 shadow-xs rounded-xs overflow-hidden">
-                <div className="bg-slate-100/90 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                <div className="bg-slate-100/90 px-3 sm:px-4 py-2.5 border-b border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1">
                   <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">
                     Scheduled Items ({items.length} Line Items • {totalQuantity} Units Total)
                   </span>
@@ -527,7 +527,7 @@ export function RfqModal() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <div>
                         <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">
                           Buyer GSTIN
@@ -552,7 +552,7 @@ export function RfqModal() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <div>
                         <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">
                           Contact / Designation
@@ -647,7 +647,7 @@ export function RfqModal() {
             /* STEP 2: OFFICIAL CORPORATE QUOTATION DOCUMENT (PRINT-READY) */
             <div className="space-y-4">
               {/* Action Bar Above Document (Hidden on Print) */}
-              <div className="bg-blue-900/10 border border-blue-400/30 p-3 rounded-xs flex flex-wrap items-center justify-between gap-3 no-print">
+              <div className="bg-blue-900/10 border border-blue-400/30 p-3 rounded-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 no-print">
                 <div className="flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-xs font-bold text-slate-800">
@@ -655,7 +655,7 @@ export function RfqModal() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={handleCopyQuoteSummary}
                     className="bg-white border border-slate-300 hover:border-slate-400 text-slate-700 px-3 py-1.5 text-xs font-bold rounded-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
@@ -686,7 +686,7 @@ export function RfqModal() {
               {/* The Actual Corporate Printable Document */}
               <div
                 id="official-quotation-document"
-                className="bg-white p-6 sm:p-10 border border-slate-300 shadow-md text-slate-900 font-sans space-y-6 max-w-4xl mx-auto"
+                className="bg-white p-4 sm:p-6 md:p-10 border border-slate-300 shadow-md text-slate-900 font-sans space-y-5 sm:space-y-6 max-w-4xl mx-auto"
               >
                 {/* 1. Official Letterhead */}
                 <div className="border-b-2 border-[#002855] pb-5">

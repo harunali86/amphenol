@@ -85,8 +85,8 @@ export function SearchModal() {
         </div>
 
         {/* Quick Filter Tags / Benchmark info */}
-        <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/70 px-4 py-2 text-[11px] text-slate-500 dark:border-slate-800/60 dark:bg-slate-900/50">
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50/70 px-4 py-2 text-[11px] text-slate-500 dark:border-slate-800/60 dark:bg-slate-900/50 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             <span className="font-semibold text-slate-700 dark:text-slate-300">Quick Filters:</span>
             {["D38999", "EV High Voltage", "RadSok 300A", "Ethernet Cat6"].map((tag) => (
               <button
@@ -138,19 +138,19 @@ export function SearchModal() {
                     {product.title}
                   </p>
 
-                  <div className="mt-1 flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 flex items-center gap-2 sm:gap-3 text-[11px] text-slate-500 dark:text-slate-400 flex-wrap">
                     <span>Pins: <strong className="text-slate-700 dark:text-slate-300">{product.pinCount}</strong></span>
                     <span>•</span>
                     <span>Rating: <strong className="text-slate-700 dark:text-slate-300">{product.currentRating}</strong></span>
                     <span>•</span>
                     <span>Sealing: <strong className="text-slate-700 dark:text-slate-300">{product.ipRating}</strong></span>
                     {product.competitorEquivalents.length > 0 && (
-                      <>
+                      <span className="hidden sm:inline-flex items-center gap-1">
                         <span>•</span>
                         <span className="text-blue-600 dark:text-blue-400">
                           Cross-match: {product.competitorEquivalents[0].brand} ({product.competitorEquivalents[0].partNumber})
                         </span>
-                      </>
+                      </span>
                     )}
                   </div>
                 </div>
@@ -194,8 +194,9 @@ export function SearchModal() {
 
         {/* Footer info */}
         <div className="border-t border-slate-200 bg-slate-50 px-4 py-2 text-[11px] text-slate-500 dark:border-slate-800 dark:bg-slate-900 flex items-center justify-between">
-          <span>Press <kbd className="font-mono font-bold">ESC</kbd> to close</span>
-          <span className="text-slate-400">15,000+ SKUs Indexed • Real-time Warehouse Inventory</span>
+          <span className="hidden sm:inline">Press <kbd className="font-mono font-bold">ESC</kbd> to close</span>
+          <span className="sm:hidden text-[10px]">Tap outside to close</span>
+          <span className="text-slate-400 hidden sm:inline">15,000+ SKUs Indexed • Real-time Warehouse Inventory</span>
         </div>
       </div>
     </div>

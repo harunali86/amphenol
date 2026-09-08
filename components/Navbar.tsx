@@ -51,158 +51,158 @@ export function Navbar() {
 
   return (
     <>
-      {/* 1. TOP UTILITY BAR (Clean, Natural Scroll to preserve viewport) */}
-      <div className="bg-[#00183b] text-slate-300 text-xs px-4 sm:px-6 py-1.5 border-b border-[#002855]/60">
+      {/* 1. TOP UTILITY BAR (Fully Responsive) */}
+      <div className="bg-[#00183b] text-slate-300 text-xs px-3 sm:px-6 py-1 border-b border-[#002855]/60">
         <div className="mx-auto max-w-[1850px] flex items-center justify-between text-[11px]">
-          {/* Subtle left note */}
+          {/* Left: Plant Status */}
           <div className="flex items-center gap-2 text-slate-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
-            <span className="font-medium text-slate-300">Pune Manufacturing Plant Direct</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 inline-block animate-pulse shrink-0" />
+            <span className="font-medium text-slate-300">Pune Plant Direct</span>
             <span className="text-slate-600 hidden sm:inline">•</span>
             <span className="hidden sm:inline text-slate-400">Toll Free: +91 20 2712 0481</span>
           </div>
 
-          {/* Clean Right Utility Navigation */}
-          <div className="flex items-center space-x-4">
+          {/* Right: Quick Links (Hidden on small mobile, essential links shown) */}
+          <div className="flex items-center space-x-3 sm:space-x-4">
             <span
               onClick={() => setActiveTab("catalog")}
-              className="cursor-pointer hover:text-white transition-colors"
+              className="cursor-pointer hover:text-white transition-colors hidden md:inline"
             >
               Compliance &amp; Certifications
             </span>
-            <span className="text-slate-600">|</span>
+            <span className="text-slate-600 hidden md:inline">|</span>
             <span
               onClick={() => setActiveTab("bom")}
-              className="cursor-pointer hover:text-white transition-colors"
+              className="cursor-pointer hover:text-white transition-colors hidden lg:inline"
             >
-              Competitor Cross-Reference
+              Competitor Cross-Ref
             </span>
-            <span className="text-slate-600">|</span>
+            <span className="text-slate-600 hidden lg:inline">|</span>
             <span
               onClick={() => setActiveTab("catalog")}
-              className="cursor-pointer hover:text-white transition-colors"
+              className="cursor-pointer hover:text-white transition-colors hidden sm:inline"
             >
-              Distributor Inventory
+              Distributor Stock
             </span>
-            <span className="text-slate-600">|</span>
+            <span className="text-slate-600 hidden sm:inline">|</span>
             <span
               onClick={() => openTracking()}
               className="cursor-pointer text-amber-300 hover:text-amber-200 transition-colors flex items-center gap-1 font-bold"
               title="Track Pune Factory Dispatch & BlueDart Air Express Waybill"
             >
-              <MapPin className="h-3.5 w-3.5 text-amber-400" />
+              <MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />
               <span>Track Order</span>
             </span>
             <span className="text-slate-600">|</span>
             <span className="text-white font-semibold flex items-center gap-1 cursor-default">
               <span>🇮🇳</span>
-              <span>India (₹ INR)</span>
+              <span className="hidden xs:inline">INR</span>
             </span>
           </div>
         </div>
       </div>
 
-      {/* 2. STICKY MAIN HEADER & ROYAL NAV (Styled with Amphenol RF Midnight Navy Header) */}
+      {/* 2. STICKY MAIN HEADER & ROYAL NAV */}
       <header className="sticky top-0 z-40 w-full bg-[#001435] font-sans border-b border-[#002855] shadow-md">
-        <div className="mx-auto max-w-[1850px] px-4 py-2.5 sm:px-6">
-        <div className="flex items-center justify-between gap-6">
-          {/* Official Amphenol RF Vector SVG (Direct from amphenolrf.com) */}
-          <div
-            onClick={() => setActiveTab("overview")}
-            className="flex cursor-pointer items-center space-x-2 shrink-0 select-none py-1 group"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/amphenol-rf-site.svg"
-              alt="Amphenol RF"
-              className="h-8 sm:h-9 w-auto object-contain group-hover:opacity-95 transition-opacity"
-            />
-          </div>
+        <div className="mx-auto max-w-[1850px] px-3 py-2 sm:px-6">
+          <div className="flex items-center justify-between gap-3 sm:gap-6">
+            {/* Official Amphenol RF Vector SVG */}
+            <div
+              onClick={() => setActiveTab("overview")}
+              className="flex cursor-pointer items-center shrink-0 select-none py-1 group"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/amphenol-rf-site.svg"
+                alt="Amphenol RF"
+                className="h-7 sm:h-9 w-auto object-contain group-hover:opacity-95 transition-opacity"
+              />
+            </div>
 
-          {/* Large Precision Search Bar (Amphenol RF & Mouser style) */}
-          <div className="hidden lg:flex flex-1 max-w-2xl items-center">
-            <div className="w-full">
-              <div className="flex items-center border border-slate-400 bg-white focus-within:border-[#002855] focus-within:ring-1 focus-within:ring-[#002855] shadow-2xs transition-all">
-                {/* Category Dropdown */}
-                <div
-                  onClick={() => setActiveTab("catalog")}
-                  className="flex items-center gap-1 border-r border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 cursor-pointer select-none shrink-0 hover:bg-slate-100 transition-colors"
-                >
-                  <span>Parts</span>
-                  <ChevronDown className="h-3 w-3 text-slate-500" />
+            {/* Large Precision Search Bar (Desktop only, lg+) */}
+            <div className="hidden lg:flex flex-1 max-w-2xl items-center">
+              <div className="w-full">
+                <div className="flex items-center border border-slate-400 bg-white focus-within:border-[#002855] focus-within:ring-1 focus-within:ring-[#002855] shadow-2xs transition-all">
+                  {/* Category Dropdown */}
+                  <div
+                    onClick={() => setActiveTab("catalog")}
+                    className="flex items-center gap-1 border-r border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 cursor-pointer select-none shrink-0 hover:bg-slate-100 transition-colors"
+                  >
+                    <span>Parts</span>
+                    <ChevronDown className="h-3 w-3 text-slate-500" />
+                  </div>
+
+                  {/* Input trigger */}
+                  <div
+                    onClick={() => setIsSearchOpen(true)}
+                    className="flex-1 flex items-center px-3 py-2 text-xs text-slate-400 cursor-pointer select-none"
+                  >
+                    <Search className="h-4 w-4 text-slate-400 mr-2 shrink-0" />
+                    <span>Enter Part Number, Series, or Competitor MPN (e.g. D38999, DTS26W)...</span>
+                  </div>
+
+                  <kbd className="mr-2 border border-slate-300 bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">
+                    Ctrl+K
+                  </kbd>
+
+                  {/* Blue Search Action Button */}
+                  <button
+                    onClick={() => setIsSearchOpen(true)}
+                    className="bg-[#002855] hover:bg-[#001D3D] text-white px-5 py-2.5 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Search className="h-3.5 w-3.5" />
+                  </button>
                 </div>
 
-                {/* Input trigger */}
-                <div
-                  onClick={() => setIsSearchOpen(true)}
-                  className="flex-1 flex items-center px-3 py-2 text-xs text-slate-400 cursor-pointer select-none"
-                >
-                  <Search className="h-4 w-4 text-slate-400 mr-2 shrink-0" />
-                  <span>Enter Part Number, Series, or Competitor MPN (e.g. D38999, DTS26W)...</span>
+                {/* In-Stock & RoHS checkboxes */}
+                <div className="flex items-center gap-4 mt-1.5 text-[11px] text-slate-300 font-medium">
+                  <label className="flex items-center gap-1.5 cursor-pointer hover:text-white transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={inStockOnly}
+                      onChange={(e) => setInStockOnly(e.target.checked)}
+                      className="h-3.5 w-3.5 border-slate-300 text-[#002855] focus:ring-[#002855]"
+                    />
+                    <span>In Stock (Pune Warehouse)</span>
+                  </label>
+                  <label className="flex items-center gap-1.5 cursor-pointer hover:text-white transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={rohsOnly}
+                      onChange={(e) => setRohsOnly(e.target.checked)}
+                      className="h-3.5 w-3.5 border-slate-300 text-[#002855] focus:ring-[#002855]"
+                    />
+                    <span>RoHS / REACH Compliant</span>
+                  </label>
                 </div>
-
-                <kbd className="mr-2 border border-slate-300 bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">
-                  Ctrl+K
-                </kbd>
-
-                {/* Blue Search Action Button */}
-                <button
-                  onClick={() => setIsSearchOpen(true)}
-                  className="bg-[#002855] hover:bg-[#001D3D] text-white px-5 py-2.5 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Search className="h-3.5 w-3.5" />
-                </button>
-              </div>
-
-              {/* In-Stock & RoHS checkboxes (Mouser style) */}
-              <div className="flex items-center gap-4 mt-1.5 text-[11px] text-slate-300 font-medium">
-                <label className="flex items-center gap-1.5 cursor-pointer hover:text-white transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={inStockOnly}
-                    onChange={(e) => setInStockOnly(e.target.checked)}
-                    className="h-3.5 w-3.5 border-slate-300 text-[#002855] focus:ring-[#002855]"
-                  />
-                  <span>In Stock (Pune Warehouse)</span>
-                </label>
-                <label className="flex items-center gap-1.5 cursor-pointer hover:text-white transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={rohsOnly}
-                    onChange={(e) => setRohsOnly(e.target.checked)}
-                    className="h-3.5 w-3.5 border-slate-300 text-[#002855] focus:ring-[#002855]"
-                  />
-                  <span>RoHS / REACH Compliant</span>
-                </label>
               </div>
             </div>
-          </div>
 
-          {/* Right Action Icons: AI Advisor + RFQ Cart with Micro-Popover */}
-          <div className="flex items-center space-x-3 shrink-0">
-            {/* AI Advisor Button */}
-            <button
-              onClick={() => setIsAiAdvisorOpen(true)}
-              className="flex items-center gap-2 border border-blue-400/40 bg-white/10 hover:bg-white/20 px-3.5 py-2 text-xs font-bold text-white active:scale-98 transition-all rounded-xs cursor-pointer"
-            >
-              <Bot className="h-4 w-4 text-blue-300" />
-              <span className="hidden sm:inline">AI Tech Advisor</span>
-              <span className="h-2 w-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
-            </button>
+            {/* Right Action Icons: AI Advisor + Quick Checkout + RFQ Cart */}
+            <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+              {/* AI Advisor Button */}
+              <button
+                onClick={() => setIsAiAdvisorOpen(true)}
+                className="flex items-center gap-1.5 border border-blue-400/40 bg-white/10 hover:bg-white/20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs font-bold text-white active:scale-98 transition-all rounded-xs cursor-pointer"
+                title="AI Technical Connector Advisor"
+              >
+                <Bot className="h-4 w-4 text-blue-300" />
+                <span className="hidden sm:inline">AI Advisor</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+              </button>
 
-            {/* Cart & Corporate Checkout Action Group */}
-            <div className="flex items-center gap-2">
-              {/* 1. Quick Checkout Button (Corporate B2B Styling) */}
+              {/* Quick Checkout Button (Visible sm+) */}
               <button
                 onClick={() => startDirectCheckout()}
-                className="flex items-center gap-1.5 border border-blue-400/40 bg-white/10 hover:bg-white/20 text-white px-3 py-2 text-xs font-semibold active:scale-98 transition-all rounded-xs cursor-pointer"
+                className="hidden sm:flex items-center gap-1.5 border border-blue-400/40 bg-white/10 hover:bg-white/20 text-white px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs font-semibold active:scale-98 transition-all rounded-xs cursor-pointer"
                 title="Direct Corporate Checkout & Payment"
               >
                 <CreditCard className="h-3.5 w-3.5 text-blue-300" />
-                <span>Quick Checkout</span>
+                <span className="hidden md:inline">Quick Checkout</span>
+                <span className="md:hidden">Buy</span>
               </button>
 
-              {/* 2. Cart Button with Hover Preview Drawer */}
+              {/* Cart Button with Hover Preview Drawer */}
               <div
                 className="relative"
                 onMouseEnter={() => setIsCartHovered(true)}
@@ -210,7 +210,7 @@ export function Navbar() {
               >
                 <button
                   onClick={() => setIsRfqOpen(true)}
-                  className="flex items-center gap-2.5 bg-[#002855] hover:bg-[#001D3D] text-white px-3.5 py-2 text-xs font-semibold active:scale-98 transition-all shadow-xs rounded-xs cursor-pointer border border-blue-400/30"
+                  className="flex items-center gap-2 bg-[#002855] hover:bg-[#001D3D] text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs font-semibold active:scale-98 transition-all shadow-xs rounded-xs cursor-pointer border border-blue-400/30"
                 >
                   <div className="relative">
                     <ShoppingBag className="h-4 w-4 text-blue-200" />
@@ -220,9 +220,9 @@ export function Navbar() {
                       </span>
                     )}
                   </div>
-                  <div className="text-left">
+                  <div className="text-left hidden xs:block">
                     <span className="block text-[9px] uppercase tracking-wider text-slate-300 font-semibold leading-none">
-                      Order Basket
+                      Basket
                     </span>
                     <span className="font-mono text-xs font-bold text-white leading-tight">
                       ₹{subtotal.toLocaleString("en-IN")}
@@ -232,7 +232,7 @@ export function Navbar() {
 
                 {/* Micro-Interaction: Hover Mini Cart Dropdown */}
                 {isCartHovered && items.length > 0 && (
-                  <div className="absolute right-0 top-full pt-2 z-50 w-84 animate-fadeIn">
+                  <div className="absolute right-0 top-full pt-2 z-50 w-80 sm:w-84 animate-fadeIn">
                     <div className="border border-slate-300 bg-white p-4 shadow-2xl text-slate-900 text-xs">
                       <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
                         <span className="font-bold uppercase tracking-wider text-[#002855]">
@@ -294,32 +294,32 @@ export function Navbar() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Search Input */}
-        <div className="mt-2 lg:hidden">
-          <div
-            onClick={() => setIsSearchOpen(true)}
-            className="flex items-center justify-between border border-slate-300 bg-white px-3 py-2 text-xs text-slate-500"
-          >
-            <div className="flex items-center gap-2">
-              <Search className="h-4 w-4 text-slate-400" />
-              <span>Search 15,000+ connectors, MPNs...</span>
+          {/* Mobile Search Input Bar */}
+          <div className="mt-2 lg:hidden">
+            <div
+              onClick={() => setIsSearchOpen(true)}
+              className="flex items-center justify-between border border-slate-300 bg-white px-3 py-2 text-xs text-slate-500 rounded-xs shadow-2xs cursor-pointer"
+            >
+              <div className="flex items-center gap-2 truncate">
+                <Search className="h-4 w-4 text-slate-400 shrink-0" />
+                <span className="truncate">Search 15,000+ connectors, MPNs...</span>
+              </div>
+              <kbd className="border border-slate-200 bg-slate-100 px-1 font-mono text-[9px] shrink-0">
+                Search
+              </kbd>
             </div>
-            <kbd className="border border-slate-200 bg-slate-100 px-1 font-mono text-[9px]">
-              Ctrl+K
-            </kbd>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* 3. SOLID ROYAL NAVY NAVIGATION BAR (Exact PEI-Genesis / Amphenol RF style) */}
-      <div className="bg-[#002855] text-white text-xs font-bold">
-        <div className="mx-auto max-w-[1850px] px-4 sm:px-6 flex items-center justify-between overflow-x-auto">
-          <nav className="flex space-x-1 py-0">
+      {/* 3. SOLID ROYAL NAVY NAVIGATION BAR (Touch-Swipeable on Mobile) */}
+      <div className="bg-[#002855] text-white text-xs font-bold border-t border-[#001d3d]">
+        <div className="mx-auto max-w-[1850px] px-2 sm:px-6 flex items-center justify-between">
+          <nav className="flex items-center space-x-1 py-0 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap shrink-0 w-full lg:w-auto">
             <button
               onClick={() => setActiveTab("overview")}
-              className={`px-4 py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[11px] cursor-pointer ${
+              className={`px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[10px] sm:text-[11px] cursor-pointer shrink-0 whitespace-nowrap ${
                 activeTab === "overview" ? "bg-[#001833] text-white border-b-2 border-[#D32F2F]" : "text-slate-100"
               }`}
             >
@@ -328,7 +328,7 @@ export function Navbar() {
 
             <button
               onClick={() => setActiveTab("catalog")}
-              className={`px-4 py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[11px] cursor-pointer ${
+              className={`px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[10px] sm:text-[11px] cursor-pointer shrink-0 whitespace-nowrap ${
                 activeTab === "catalog" ? "bg-[#001833] text-white border-b-2 border-[#D32F2F]" : "text-slate-100"
               }`}
             >
@@ -337,33 +337,32 @@ export function Navbar() {
 
             <button
               onClick={() => setActiveTab("configurator")}
-              className={`px-4 py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[11px] cursor-pointer ${
+              className={`px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[10px] sm:text-[11px] cursor-pointer shrink-0 whitespace-nowrap ${
                 activeTab === "configurator" ? "bg-[#001833] text-white border-b-2 border-[#D32F2F]" : "text-slate-100"
               }`}
             >
-              <Sliders className="h-3.5 w-3.5 text-amber-400" />
-              Mil-Spec 38999 Part Builder
+              <Sliders className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+              <span>3D Part Builder</span>
             </button>
 
             <button
               onClick={() => setActiveTab("bom")}
-              className={`px-4 py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[11px] cursor-pointer ${
+              className={`px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-[#001833] transition-all flex items-center gap-1.5 uppercase tracking-wider text-[10px] sm:text-[11px] cursor-pointer shrink-0 whitespace-nowrap ${
                 activeTab === "bom" ? "bg-[#001833] text-white border-b-2 border-[#D32F2F]" : "text-slate-100"
               }`}
             >
-              <FileSpreadsheet className="h-3.5 w-3.5 text-emerald-400" />
-              Upload Parts List (BOM Excel)
+              <FileSpreadsheet className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+              <span>BOM Excel Importer</span>
             </button>
           </nav>
 
-          <div className="hidden xl:flex items-center space-x-3 text-[11px] text-blue-200">
-            <span>Direct Plant Order Dispatch: <strong className="text-white">Pune Central Hub</strong></span>
+          <div className="hidden xl:flex items-center space-x-3 text-[11px] text-blue-200 shrink-0">
+            <span>Direct Plant Dispatch: <strong className="text-white">Pune Central Hub</strong></span>
             <span>•</span>
-            <span className="text-emerald-300 font-bold">100% Domestic GST Credit</span>
+            <span className="text-emerald-300">100% Domestic GST Credit</span>
           </div>
         </div>
       </div>
-    </header>
     </>
   );
 }

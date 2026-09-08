@@ -18,8 +18,8 @@ export function Footer() {
 
   return (
     <footer className="bg-[#00144f] text-white border-t border-[#00226b]">
-      <div className="mx-auto max-w-[1850px] px-6 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14">
+      <div className="mx-auto max-w-[1850px] px-4 sm:px-6 md:px-8 lg:px-12 py-10 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
           
           {/* LEFT COLUMN: Logo + 2 Rounded Cards (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
@@ -111,7 +111,7 @@ export function Footer() {
           <div className="lg:col-span-7 space-y-12">
             
             {/* TOP ROW: Products | Markets | Engineering Center */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
               
               {/* Products */}
               <div>
@@ -318,7 +318,7 @@ export function Footer() {
             </div>
 
             {/* BOTTOM ROW: Contact | Resources | Company */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-6 border-t border-blue-400/20">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 pt-6 border-t border-blue-400/20">
               
               {/* Contact */}
               <div>
@@ -431,7 +431,7 @@ export function Footer() {
           <div>
             © 2026 Amphenol Interconnect India Pvt. Ltd. All Rights Reserved.
           </div>
-          <div className="flex flex-wrap items-center gap-6 text-slate-300">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-6 text-slate-300">
             <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
             <span>•</span>
             <span className="hover:text-white cursor-pointer transition-colors">Terms of Sale</span>

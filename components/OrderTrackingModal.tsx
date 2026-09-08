@@ -189,9 +189,9 @@ export function OrderTrackingModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-xs animate-fadeIn overflow-y-auto">
       <div className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-sm border border-blue-900/40 bg-white shadow-2xl overflow-hidden my-auto">
         {/* MODAL HEADER */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-[#00183b] text-white">
-          <div className="flex items-center gap-3">
-            <div className="relative w-28 h-7">
+        <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-slate-200 bg-[#00183b] text-white">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <div className="relative w-28 h-7 hidden sm:block shrink-0">
               <Image
                 src="/images/amphenol-rf-site.svg"
                 alt="Amphenol Interconnect"
@@ -200,14 +200,14 @@ export function OrderTrackingModal() {
               />
             </div>
             <div className="h-4 w-px bg-white/20 hidden sm:block" />
-            <div>
-              <h2 className="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
-                <span>Pune Plant Live Dispatch &amp; Shipment Tracer</span>
-                <span className="bg-blue-500/30 text-blue-200 border border-blue-400/40 text-[10px] font-mono font-bold px-2 py-0.2 rounded-2xs">
+            <div className="min-w-0">
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 flex-wrap">
+                <span className="truncate">Dispatch & Shipment Tracer</span>
+                <span className="bg-blue-500/30 text-blue-200 border border-blue-400/40 text-[10px] font-mono font-bold px-2 py-0.5 rounded-2xs shrink-0">
                   REAL-TIME GPS
                 </span>
               </h2>
-              <p className="text-[10px] text-slate-300">
+              <p className="text-[10px] text-slate-300 hidden sm:block">
                 Direct Indian Manufacturing Hub (Bhosari, Pune) • BlueDart Air Aviation Tracking
               </p>
             </div>
@@ -215,7 +215,7 @@ export function OrderTrackingModal() {
 
           <button
             onClick={() => setIsTrackingOpen(false)}
-            className="text-slate-400 hover:text-white p-1 rounded-xs transition-colors cursor-pointer"
+            className="text-slate-400 hover:text-white p-1 rounded-xs transition-colors cursor-pointer shrink-0 ml-2"
           >
             <X className="h-5 w-5" />
           </button>
@@ -272,7 +272,7 @@ export function OrderTrackingModal() {
         </div>
 
         {/* BODY */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-6 bg-slate-50 text-slate-900 space-y-5">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 md:p-6 bg-slate-50 text-slate-900 space-y-4 sm:space-y-5">
           {/* MAIN STATUS OVERVIEW CARD */}
           <div className="bg-white border border-slate-300 rounded-xs p-5 shadow-xs">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
@@ -495,15 +495,16 @@ export function OrderTrackingModal() {
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="border-t border-slate-200 bg-slate-100 px-6 py-3 flex items-center justify-between text-xs">
+        <div className="border-t border-slate-200 bg-slate-100 px-3 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2 text-slate-600">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            <span>Direct Plant Warranty • BlueDart Air Priority Escort Protection</span>
+            <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
+            <span className="hidden sm:inline">Direct Plant Warranty • BlueDart Air Priority Escort Protection</span>
+            <span className="sm:hidden">Plant Warranty • Priority Escort</span>
           </div>
 
           <button
             onClick={() => setIsTrackingOpen(false)}
-            className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold px-4 py-1.5 rounded-xs transition-colors cursor-pointer"
+            className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold px-4 py-1.5 rounded-xs transition-colors cursor-pointer w-full sm:w-auto"
           >
             Close Tracer
           </button>

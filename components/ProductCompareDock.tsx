@@ -39,13 +39,13 @@ export function ProductCompareDock() {
           </div>
 
           {/* Selected Item Chips */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {compareProducts.map((p) => (
               <div
                 key={p.id}
-                className="flex items-center gap-2 bg-slate-900/90 border border-blue-400/40 rounded-xs px-2 py-1 shadow-xs group"
+                className="flex items-center gap-1.5 sm:gap-2 bg-slate-900/90 border border-blue-400/40 rounded-xs px-1.5 sm:px-2 py-1 shadow-xs group shrink-0"
               >
-                <div className="relative w-6 h-6 shrink-0 bg-white/10 rounded-2xs overflow-hidden">
+                <div className="relative w-5 h-5 sm:w-6 sm:h-6 shrink-0 bg-white/10 rounded-2xs overflow-hidden">
                   <Image
                     src={p.image}
                     alt={p.mpn}
@@ -55,10 +55,10 @@ export function ProductCompareDock() {
                   />
                 </div>
                 <div className="text-left">
-                  <div className="font-mono text-xs font-bold text-amber-300 max-w-[110px] truncate">
+                  <div className="font-mono text-[10px] sm:text-xs font-bold text-amber-300 max-w-[80px] sm:max-w-[110px] truncate">
                     {p.mpn}
                   </div>
-                  <div className="text-[9px] text-slate-400 leading-none">
+                  <div className="text-[8px] sm:text-[9px] text-slate-400 leading-none hidden sm:block">
                     {p.series} • {p.pinCount}P
                   </div>
                 </div>

@@ -212,13 +212,13 @@ export function ProductCompareModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm animate-fadeIn overflow-y-auto">
       <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-white rounded-sm shadow-2xl border border-blue-900/30 overflow-hidden my-auto">
         {/* Header Bar */}
-        <div className="bg-[#001D3D] text-white p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0 border-b border-blue-400/30">
+        <div className="bg-[#001D3D] text-white p-3 sm:p-4 md:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0 border-b border-blue-400/30">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xs bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-amber-300">
               <ArrowLeftRight className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-black tracking-tight text-white flex items-center gap-2">
+              <h2 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-white flex items-center gap-2 flex-wrap">
                 <span>Side-by-Side Parametric Matrix</span>
                 <span className="text-xs font-mono font-normal text-blue-200 bg-blue-950/80 px-2 py-0.5 rounded-2xs border border-blue-400/30">
                   {compareProducts.length} Connectors Selected
@@ -276,8 +276,8 @@ export function ProductCompareModal() {
         </div>
 
         {/* Scrollable Matrix Area */}
-        <div className="flex-1 overflow-x-auto overflow-y-auto p-4 sm:p-6 bg-slate-50">
-          <div className="min-w-[680px]">
+        <div className="flex-1 overflow-x-auto overflow-y-auto p-3 sm:p-4 md:p-6 bg-slate-50">
+          <div className="min-w-[560px] sm:min-w-[680px]">
             <table className="w-full border-collapse text-left text-xs bg-white border border-slate-200 shadow-xs rounded-xs overflow-hidden">
               {/* Sticky Table Header with Products */}
               <thead>

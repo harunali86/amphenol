@@ -153,9 +153,9 @@ export function DirectCheckoutModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-xs animate-fadeIn overflow-y-auto">
       <div className="relative w-full max-w-4xl max-h-[94vh] flex flex-col rounded-sm border border-blue-900/40 bg-white shadow-2xl overflow-hidden my-auto">
         {/* MODAL HEADER */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-[#00183b] text-white">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-200 bg-[#00183b] text-white">
           <div className="flex items-center gap-3">
-            <div className="relative w-28 h-7">
+            <div className="relative w-24 sm:w-28 h-6 sm:h-7 shrink-0">
               <Image
                 src="/images/amphenol-rf-site.svg"
                 alt="Amphenol Interconnect"
@@ -165,13 +165,13 @@ export function DirectCheckoutModal() {
             </div>
             <div className="h-4 w-px bg-white/20 hidden sm:block" />
             <div>
-              <h2 className="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center gap-1.5 sm:gap-2">
                 <span>Direct Plant Checkout</span>
-                <span className="bg-emerald-500 text-slate-950 text-[10px] font-mono font-black px-1.5 py-0.2 rounded-2xs">
+                <span className="bg-emerald-500 text-slate-950 text-[9px] sm:text-[10px] font-mono font-black px-1.5 py-0.2 rounded-2xs">
                   24H DISPATCH
                 </span>
               </h2>
-              <p className="text-[10px] text-slate-300">
+              <p className="text-[9px] sm:text-[10px] text-slate-300">
                 Bhosari Logistics Hub • Instant Tax Invoice • AS9100D Certified
               </p>
             </div>
@@ -186,11 +186,11 @@ export function DirectCheckoutModal() {
         </div>
 
         {/* STEPPER PROGRESS BAR */}
-        <div className="bg-slate-100 border-b border-slate-200 px-6 py-2.5">
+        <div className="bg-slate-100 border-b border-slate-200 px-3 sm:px-6 py-2 sm:py-2.5">
           <div className="flex items-center justify-between max-w-2xl mx-auto text-xs font-bold">
             <button
               onClick={() => step > 1 && setStep(1)}
-              className={`flex items-center gap-1.5 cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
                 step === 1
                   ? "text-[#002855]"
                   : step > 1
@@ -199,7 +199,7 @@ export function DirectCheckoutModal() {
               }`}
             >
               <span
-                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] ${
+                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${
                   step === 1
                     ? "bg-[#002855] text-white"
                     : step > 1
@@ -209,14 +209,15 @@ export function DirectCheckoutModal() {
               >
                 {step > 1 ? "✓" : "1"}
               </span>
-              <span>1. Delivery &amp; GSTIN</span>
+              <span className="hidden sm:inline">1. Delivery &amp; GSTIN</span>
+              <span className="sm:hidden text-[11px]">1. Delivery</span>
             </button>
 
-            <ChevronRight className="h-4 w-4 text-slate-300" />
+            <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-300 shrink-0" />
 
             <button
               onClick={() => step > 2 && setStep(2)}
-              className={`flex items-center gap-1.5 cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
                 step === 2
                   ? "text-[#002855]"
                   : step > 2
@@ -225,7 +226,7 @@ export function DirectCheckoutModal() {
               }`}
             >
               <span
-                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] ${
+                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${
                   step === 2
                     ? "bg-[#002855] text-white"
                     : step > 2
@@ -235,14 +236,15 @@ export function DirectCheckoutModal() {
               >
                 {step > 2 ? "✓" : "2"}
               </span>
-              <span>2. Express Logistics</span>
+              <span className="hidden sm:inline">2. Express Logistics</span>
+              <span className="sm:hidden text-[11px]">2. Logistics</span>
             </button>
 
-            <ChevronRight className="h-4 w-4 text-slate-300" />
+            <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-300 shrink-0" />
 
             <button
               onClick={() => step > 3 && setStep(3)}
-              className={`flex items-center gap-1.5 cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
                 step === 3
                   ? "text-[#002855]"
                   : step > 3
@@ -251,7 +253,7 @@ export function DirectCheckoutModal() {
               }`}
             >
               <span
-                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] ${
+                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${
                   step === 3
                     ? "bg-[#002855] text-white"
                     : step > 3
@@ -261,24 +263,26 @@ export function DirectCheckoutModal() {
               >
                 {step > 3 ? "✓" : "3"}
               </span>
-              <span>3. Payment Gateway</span>
+              <span className="hidden sm:inline">3. Secure Payment</span>
+              <span className="sm:hidden text-[11px]">3. Payment</span>
             </button>
 
-            <ChevronRight className="h-4 w-4 text-slate-300" />
+            <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-300 shrink-0" />
 
             <div
-              className={`flex items-center gap-1.5 ${
+              className={`flex items-center gap-1 sm:gap-1.5 ${
                 step === 4 ? "text-emerald-700 font-bold" : "text-slate-400"
               }`}
             >
               <span
-                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] ${
+                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${
                   step === 4 ? "bg-emerald-600 text-white" : "bg-slate-300 text-slate-600"
                 }`}
               >
                 4
               </span>
-              <span>4. Order Placed</span>
+              <span className="hidden sm:inline">4. Order Placed</span>
+              <span className="sm:hidden text-[11px]">4. Done</span>
             </div>
           </div>
         </div>

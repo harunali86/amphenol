@@ -180,7 +180,7 @@ export function ExecutiveOverview() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#001026] via-[#00183b]/95 to-[#00183b]/70" />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 px-6 py-10 sm:px-10 sm:py-14 items-center">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 py-8 sm:px-10 sm:py-14 items-center">
           {/* Left Hero Pitch */}
           <div className="lg:col-span-7 space-y-4">
             {/* Live Factory Status Ticker */}
@@ -207,20 +207,20 @@ export function ExecutiveOverview() {
               Direct Indian manufacturing plant portal with verified Bhosari warehouse stock, certified MIL-SPEC QPL series, sub-30ms parametric finder, and instant domestic GST input tax credit (ITC) invoicing.
             </p>
 
-            <div className="pt-1 flex flex-wrap items-center gap-3">
+            <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button
                 onClick={() => setActiveTab("catalog")}
-                className="bg-white hover:bg-slate-100 text-[#002855] text-sm font-bold px-5 py-2.5 transition-all shadow-sm flex items-center gap-2 rounded-xs cursor-pointer hover:shadow-md active:scale-95"
+                className="bg-white hover:bg-slate-100 text-[#002855] text-sm font-bold px-5 py-2.5 transition-all shadow-sm flex items-center justify-center gap-2 rounded-xs cursor-pointer hover:shadow-md active:scale-95"
               >
                 <span>Explore 15,000+ SKUs Catalog</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 shrink-0" />
               </button>
 
               <button
                 onClick={() => setActiveTab("configurator")}
-                className="bg-[#002855] hover:bg-[#001D3D] text-white text-sm font-bold px-5 py-2.5 border border-white/30 transition-all flex items-center gap-2 rounded-xs cursor-pointer hover:border-white/60 active:scale-95"
+                className="bg-[#002855] hover:bg-[#001D3D] text-white text-sm font-bold px-5 py-2.5 border border-white/30 transition-all flex items-center justify-center gap-2 rounded-xs cursor-pointer hover:border-white/60 active:scale-95"
               >
-                <Wrench className="h-4 w-4 text-blue-300" />
+                <Wrench className="h-4 w-4 text-blue-300 shrink-0" />
                 <span>3D Mil-Spec Part Builder</span>
               </button>
             </div>
@@ -1125,227 +1125,375 @@ export function ExecutiveOverview() {
           }
 
           return (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 bg-slate-100/90 text-xs font-bold uppercase tracking-wider text-slate-700">
-                    <th className="py-3.5 px-4">Part Number</th>
-                    <th className="py-3.5 px-4">Series &amp; Class</th>
-                    <th className="py-3.5 px-4">Contacts &amp; Rating</th>
-                    <th className="py-3.5 px-4">Stock Status</th>
-                    <th className="py-3.5 px-4">Unit Price (@ MOQ)</th>
-                    <th className="py-3.5 px-4 text-right">Order &amp; Procurement</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200/80 font-medium">
-                  {filteredProducts.slice(0, 8).map((p) => {
-                    const currentQty = getProductQty(p.mpn, p.moq);
-                    const isComparing = compareProducts.some((cp) => cp.id === p.id || cp.mpn === p.mpn);
-                    return (
-                      <tr
-                        key={p.id}
-                        className={`transition-colors group/row ${
-                          isComparing ? "bg-blue-50/90" : "hover:bg-blue-50/50"
-                        }`}
-                      >
-                        {/* 1. Compare Checkbox & Photo & MPN with 1-Click Copy */}
-                        <td className="py-4 px-4">
-                          <div className="flex items-center gap-3">
-                            {/* Compare Checkbox */}
-                            <label
-                              onClick={(e) => e.stopPropagation()}
-                              title={isComparing ? "Remove from comparison" : "Add to side-by-side comparison (up to 4)"}
-                              className="flex items-center cursor-pointer p-0.5 select-none"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={isComparing}
-                                onChange={() => toggleCompare(p)}
-                                className="w-4 h-4 accent-[#002855] text-[#002855] border-slate-300 rounded cursor-pointer"
-                              />
-                            </label>
-
-                            <div
-                              onClick={() => setQuickViewProduct(p)}
-                              title="Click to view pinout diagram & full specifications"
-                              className="w-11 h-11 shrink-0 border border-slate-200 bg-white p-1 flex items-center justify-center relative rounded shadow-2xs group-hover/row:border-[#002855]/60 hover:ring-2 hover:ring-[#002855]/20 cursor-pointer transition-all"
-                            >
-                              <div className="relative w-9 h-9">
-                                <Image
-                                  src={p.image}
-                                  alt={p.mpn}
-                                  fill
-                                  sizes="36px"
-                                  className="object-contain group-hover/row:scale-105 transition-transform"
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <div className="flex items-center gap-1.5">
-                                <button
-                                  type="button"
-                                  onClick={() => setQuickViewProduct(p)}
-                                  className="font-mono text-xs sm:text-sm font-black text-[#002855] hover:text-blue-700 hover:underline cursor-pointer text-left flex items-center gap-1"
-                                  title="View technical pinout diagram & specs"
-                                >
-                                  <span>{p.mpn}</span>
-                                  <Eye className="h-3.5 w-3.5 text-slate-400 group-hover/row:text-[#002855] transition-colors" />
-                                </button>
-                                <button
-                                  onClick={(e) => handleCopyMpn(p.mpn, e)}
-                                  title="Copy Part Number"
-                                  className="p-1 text-slate-400 hover:text-[#002855] hover:bg-slate-100 rounded transition-colors cursor-pointer"
-                                >
-                                  {copiedMpn === p.mpn ? (
-                                    <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
-                                      <Check className="h-3.5 w-3.5" />
-                                    </span>
-                                  ) : (
-                                    <Copy className="h-3.5 w-3.5 opacity-0 group-hover/row:opacity-100 transition-opacity" />
-                                  )}
-                                </button>
-                              </div>
-                              <div className="text-xs text-slate-500 font-normal mt-0.5">
-                                {p.matingType} Mating
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* 2. Series & Class (with Integrated Category Badge) */}
-                        <td
-                          className="py-4 px-4 text-slate-800 max-w-[280px] cursor-pointer"
-                          onClick={() => setQuickViewProduct(p)}
-                          title="Click to view pinout & specs"
+            <>
+              {/* DESKTOP VIEW (MD+): Full 6-Column High-Density Engineering Table */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-200 bg-slate-100/90 text-xs font-bold uppercase tracking-wider text-slate-700">
+                      <th className="py-3.5 px-4">Part Number</th>
+                      <th className="py-3.5 px-4">Series &amp; Class</th>
+                      <th className="py-3.5 px-4">Contacts &amp; Rating</th>
+                      <th className="py-3.5 px-4">Stock Status</th>
+                      <th className="py-3.5 px-4">Unit Price (@ MOQ)</th>
+                      <th className="py-3.5 px-4 text-right">Order &amp; Procurement</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200/80 font-medium">
+                    {filteredProducts.slice(0, 8).map((p) => {
+                      const currentQty = getProductQty(p.mpn, p.moq);
+                      const isComparing = compareProducts.some((cp) => cp.id === p.id || cp.mpn === p.mpn);
+                      return (
+                        <tr
+                          key={p.id}
+                          className={`transition-colors group/row ${
+                            isComparing ? "bg-blue-50/90" : "hover:bg-blue-50/50"
+                          }`}
                         >
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-bold text-slate-900 group-hover/row:text-[#002855] transition-colors text-xs sm:text-sm">
+                          {/* 1. Compare Checkbox & Photo & MPN with 1-Click Copy */}
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-3">
+                              {/* Compare Checkbox */}
+                              <label
+                                onClick={(e) => e.stopPropagation()}
+                                title={isComparing ? "Remove from comparison" : "Add to side-by-side comparison (up to 4)"}
+                                className="flex items-center cursor-pointer p-0.5 select-none"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={isComparing}
+                                  onChange={() => toggleCompare(p)}
+                                  className="w-4 h-4 accent-[#002855] text-[#002855] border-slate-300 rounded cursor-pointer"
+                                />
+                              </label>
+
+                              <div
+                                onClick={() => setQuickViewProduct(p)}
+                                title="Click to view pinout diagram & full specifications"
+                                className="w-11 h-11 shrink-0 border border-slate-200 bg-white p-1 flex items-center justify-center relative rounded shadow-2xs group-hover/row:border-[#002855]/60 hover:ring-2 hover:ring-[#002855]/20 cursor-pointer transition-all"
+                              >
+                                <div className="relative w-9 h-9">
+                                  <Image
+                                    src={p.image}
+                                    alt={p.mpn}
+                                    fill
+                                    sizes="36px"
+                                    className="object-contain group-hover/row:scale-105 transition-transform"
+                                  />
+                                </div>
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() => setQuickViewProduct(p)}
+                                    className="font-mono text-xs sm:text-sm font-black text-[#002855] hover:text-blue-700 hover:underline cursor-pointer text-left flex items-center gap-1"
+                                    title="View technical pinout diagram & specs"
+                                  >
+                                    <span>{p.mpn}</span>
+                                    <Eye className="h-3.5 w-3.5 text-slate-400 group-hover/row:text-[#002855] transition-colors" />
+                                  </button>
+                                  <button
+                                    onClick={(e) => handleCopyMpn(p.mpn, e)}
+                                    title="Copy Part Number"
+                                    className="p-1 text-slate-400 hover:text-[#002855] hover:bg-slate-100 rounded transition-colors cursor-pointer"
+                                  >
+                                    {copiedMpn === p.mpn ? (
+                                      <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
+                                        <Check className="h-3 w-3" /> Copied!
+                                      </span>
+                                    ) : (
+                                      <Copy className="h-3 w-3" />
+                                    )}
+                                  </button>
+                                </div>
+                                <div className="text-[11px] text-slate-500 line-clamp-1 max-w-xs sm:max-w-sm">
+                                  {p.title}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* 2. Series & Class */}
+                          <td className="py-4 px-4">
+                            <span className="inline-block bg-slate-100 text-slate-800 border border-slate-300 font-mono text-[11px] px-2 py-0.5 rounded font-semibold">
                               {p.series}
                             </span>
-                            <span className="text-[10px] font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.2 rounded-2xs whitespace-nowrap">
-                              {p.category.includes("Military") ? "Mil-Aero" : p.category}
+                            <div className="text-[11px] text-slate-500 mt-1">
+                              {p.category}
+                            </div>
+                          </td>
+
+                          {/* 3. Contacts & Rating */}
+                          <td className="py-4 px-4">
+                            <div className="text-xs font-semibold text-slate-800">
+                              {p.pinCount} Gold Pins
+                            </div>
+                            <div className="text-[11px] text-slate-500">
+                              {p.currentRating} • {p.ipRating}
+                            </div>
+                          </td>
+
+                          {/* 4. Stock Status */}
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-1.5">
+                              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                              <span className="font-mono text-xs font-bold text-emerald-700">
+                                {p.stock.toLocaleString()} pcs
+                              </span>
+                            </div>
+                            <span className="text-[10px] text-slate-500">
+                              Pune Hub • 24h Air
                             </span>
+                          </td>
+
+                          {/* 5. Unit Price */}
+                          <td className="py-4 px-4">
+                            <div className="font-mono text-sm font-bold text-slate-900">
+                              ₹{p.priceTiers[0].price.toLocaleString("en-IN")}
+                              <span className="text-[10px] font-normal text-slate-500">/pc</span>
+                            </div>
+                            <span className="text-[10px] text-slate-500 block">
+                              MOQ: {p.moq} pcs (+GST)
+                            </span>
+                          </td>
+
+                          {/* 6. Stepper & Actions */}
+                          <td className="py-4 px-4 text-right">
+                            <div className="inline-flex items-center justify-end gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setQuickViewProduct(p)}
+                                title="Pinout & Specs"
+                                className="px-2.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-[#002855] hover:bg-blue-50 border border-slate-200 bg-white rounded transition-colors cursor-pointer flex items-center gap-1.5"
+                              >
+                                <Eye className="h-3.5 w-3.5" />
+                                <span>Specs</span>
+                              </button>
+
+                              <div className="flex items-center border border-slate-300 bg-white rounded overflow-hidden h-8">
+                                <button
+                                  onClick={() => updateProductQty(p.mpn, -p.moq, p.moq)}
+                                  disabled={currentQty <= p.moq}
+                                  className="px-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer h-full"
+                                  title={`Decrease by ${p.moq}`}
+                                >
+                                  <Minus className="h-3 w-3" />
+                                </button>
+                                <span className="px-2 font-mono text-xs font-bold text-slate-800 min-w-8 text-center select-none">
+                                  {currentQty}
+                                </span>
+                                <button
+                                  onClick={() => updateProductQty(p.mpn, p.moq, p.moq)}
+                                  className="px-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer h-full"
+                                  title={`Increase by ${p.moq}`}
+                                >
+                                  <Plus className="h-3 w-3" />
+                                </button>
+                              </div>
+
+                              <button
+                                onClick={() => handleAddRfqWithFeedback(p, currentQty)}
+                                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold transition-all shadow-xs rounded active:scale-95 cursor-pointer whitespace-nowrap ${
+                                  addedMpn === p.mpn
+                                    ? "bg-emerald-600 text-white scale-105"
+                                    : "bg-[#002855] hover:bg-[#001D3D] text-white"
+                                }`}
+                                title="Add to RFQ Quotation Basket"
+                              >
+                                {addedMpn === p.mpn ? (
+                                  <>
+                                    <Check className="h-3.5 w-3.5" />
+                                    <span>Added!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Plus className="h-3.5 w-3.5" />
+                                    <span>+ RFQ</span>
+                                  </>
+                                )}
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => startDirectCheckout(p, currentQty)}
+                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded shadow-xs active:scale-95 cursor-pointer whitespace-nowrap transition-colors"
+                                title="Instant Corporate Checkout & 24h Factory Dispatch"
+                              >
+                                <CreditCard className="h-3.5 w-3.5 text-white" />
+                                <span>Buy Now</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* MOBILE VIEW (< MD): Touch Product Cards (DigiKey / Amazon Mobile Style) */}
+              <div className="block md:hidden divide-y divide-slate-200">
+                {filteredProducts.slice(0, 8).map((p) => {
+                  const currentQty = getProductQty(p.mpn, p.moq);
+                  const isComparing = compareProducts.some((cp) => cp.id === p.id || cp.mpn === p.mpn);
+                  return (
+                    <div
+                      key={p.id}
+                      className={`p-4 transition-colors ${
+                        isComparing ? "bg-blue-50/70" : "bg-white"
+                      }`}
+                    >
+                      {/* Top Row: Photo + MPN & Series + Compare */}
+                      <div className="flex items-start gap-3">
+                        <div
+                          onClick={() => setQuickViewProduct(p)}
+                          className="w-14 h-14 shrink-0 border border-slate-200 bg-white p-1 rounded flex items-center justify-center relative cursor-pointer"
+                        >
+                          <div className="relative w-11 h-11">
+                            <Image
+                              src={p.image}
+                              alt={p.mpn}
+                              fill
+                              sizes="44px"
+                              className="object-contain"
+                            />
                           </div>
-                          <div className="text-xs text-slate-500 truncate mt-0.5">{p.title}</div>
-                        </td>
+                        </div>
 
-                        {/* 3. Contacts & Rating */}
-                        <td className="py-4 px-4 text-slate-800 whitespace-nowrap">
-                          <div className="font-mono font-bold text-slate-900 text-xs sm:text-sm">{p.pinCount} Contacts</div>
-                          <div className="text-xs text-slate-500 font-mono mt-0.5">{p.currentRating}</div>
-                        </td>
-
-                        {/* 4. Stock Status */}
-                        <td className="py-4 px-4 whitespace-nowrap">
-                          <div className="font-mono font-bold text-emerald-700 flex items-center gap-1.5 text-xs sm:text-sm">
-                            <span className="h-2 w-2 rounded-full bg-emerald-500 inline-block animate-pulse" />
-                            <span>{p.stock.toLocaleString()} pcs</span>
-                          </div>
-                          <div className="text-xs text-slate-500 mt-0.5">Ships Today (Pune Hub)</div>
-                        </td>
-
-                        {/* 5. Unit Price (@ MOQ) */}
-                        <td className="py-4 px-4 whitespace-nowrap">
-                          <div className="font-mono font-bold text-[#002855] text-sm sm:text-base">
-                            ₹{p.priceTiers[0].price.toLocaleString("en-IN")}
-                          </div>
-                          <div className="text-xs text-slate-500 font-medium mt-0.5">
-                            MOQ: {p.moq} pcs • <span className="text-emerald-700 font-semibold">+ITC</span>
-                          </div>
-                        </td>
-
-                        {/* 6. Order & Procurement Actions (Compare + Specs + Stepper + RFQ + Buy Now) */}
-                        <td className="py-4 px-4 text-right whitespace-nowrap">
-                          <div className="flex items-center justify-end gap-2">
-                            {/* Compare Button */}
-                            <button
-                              type="button"
-                              onClick={() => toggleCompare(p)}
-                              title={isComparing ? "Remove from comparison" : "Add to side-by-side comparison (up to 4)"}
-                              className={`px-2.5 py-1.5 text-xs font-semibold rounded border transition-colors cursor-pointer flex items-center gap-1.5 ${
-                                isComparing
-                                  ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                                  : "text-slate-600 hover:text-[#002855] hover:bg-blue-50 border-slate-200 bg-white"
-                              }`}
-                            >
-                              <ArrowLeftRight className="h-3.5 w-3.5" />
-                              <span>{isComparing ? "Comparing" : "Compare"}</span>
-                            </button>
-
-                            {/* Quick View Specs Button */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-1">
                             <button
                               type="button"
                               onClick={() => setQuickViewProduct(p)}
-                              title="View technical pinout diagram & specifications"
-                              className="px-2.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-[#002855] hover:bg-blue-50 border border-slate-200 bg-white rounded transition-colors cursor-pointer flex items-center gap-1.5"
+                              className="font-mono text-sm font-black text-[#002855] hover:underline truncate text-left"
                             >
-                              <Eye className="h-3.5 w-3.5" />
-                              <span>Specs</span>
+                              {p.mpn}
                             </button>
-
-                            {/* Quantity Stepper */}
-                            <div className="flex items-center border border-slate-300 bg-white rounded overflow-hidden h-8">
-                              <button
-                                onClick={() => updateProductQty(p.mpn, -p.moq, p.moq)}
-                                disabled={currentQty <= p.moq}
-                                className="px-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer h-full"
-                                title={`Decrease by ${p.moq}`}
-                              >
-                                <Minus className="h-3 w-3" />
-                              </button>
-                              <span className="px-2 font-mono text-xs font-bold text-slate-800 min-w-8 text-center select-none">
-                                {currentQty}
-                              </span>
-                              <button
-                                onClick={() => updateProductQty(p.mpn, p.moq, p.moq)}
-                                className="px-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer h-full"
-                                title={`Increase by ${p.moq}`}
-                              >
-                                <Plus className="h-3 w-3" />
-                              </button>
-                            </div>
-
-                            {/* Add to RFQ Button */}
                             <button
-                              onClick={() => handleAddRfqWithFeedback(p, currentQty)}
-                              className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold transition-all shadow-xs rounded active:scale-95 cursor-pointer whitespace-nowrap ${
-                                addedMpn === p.mpn
-                                  ? "bg-emerald-600 text-white scale-105"
-                                  : "bg-[#002855] hover:bg-[#001D3D] text-white"
-                              }`}
-                              title="Add to RFQ Quotation Basket"
+                              onClick={(e) => handleCopyMpn(p.mpn, e)}
+                              className="p-1 text-slate-400 hover:text-[#002855] shrink-0"
+                              title="Copy MPN"
                             >
-                              {addedMpn === p.mpn ? (
-                                <>
-                                  <Check className="h-3.5 w-3.5" />
-                                  <span>Added!</span>
-                                </>
+                              {copiedMpn === p.mpn ? (
+                                <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
+                                  <Check className="h-3 w-3" />
+                                </span>
                               ) : (
-                                <>
-                                  <Plus className="h-3.5 w-3.5" />
-                                  <span>+ RFQ</span>
-                                </>
+                                <Copy className="h-3.5 w-3.5" />
                               )}
                             </button>
-
-                            {/* Direct Instant Buy Button */}
-                            <button
-                              type="button"
-                              onClick={() => startDirectCheckout(p, currentQty)}
-                              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded shadow-xs active:scale-95 cursor-pointer whitespace-nowrap transition-colors"
-                              title="Instant Corporate Checkout & 24h Factory Dispatch"
-                            >
-                              <CreditCard className="h-3.5 w-3.5 text-white" />
-                              <span>Buy Now</span>
-                            </button>
                           </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+
+                          <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                            <span className="bg-slate-100 text-slate-700 text-[10px] font-mono px-1.5 py-0.2 rounded font-semibold border border-slate-200">
+                              {p.series}
+                            </span>
+                            <span className="text-[10px] text-slate-500 truncate">
+                              {p.category}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Middle Row: Specs & Stock & Price */}
+                      <div className="mt-3 grid grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded border border-slate-200 text-xs">
+                        <div>
+                          <span className="text-[10px] text-slate-500 uppercase block font-semibold">
+                            Contacts &amp; IP
+                          </span>
+                          <span className="font-semibold text-slate-800 text-[11px]">
+                            {p.pinCount} Pins • {p.ipRating}
+                          </span>
+                          <span className="text-[10px] text-slate-500 block">
+                            {p.currentRating}
+                          </span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[10px] text-slate-500 uppercase block font-semibold">
+                            Pune Factory Stock
+                          </span>
+                          <span className="font-mono font-bold text-emerald-700 text-xs flex items-center justify-end gap-1">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                            {p.stock.toLocaleString()} pcs
+                          </span>
+                          <span className="font-mono font-black text-slate-900 text-xs block mt-0.5">
+                            ₹{p.priceTiers[0].price.toLocaleString("en-IN")}{" "}
+                            <span className="text-[10px] font-normal text-slate-500">/pc</span>
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Bottom Row: Stepper + RFQ + Buy Now + Specs */}
+                      <div className="mt-3 flex items-center justify-between gap-2">
+                        {/* Stepper */}
+                        <div className="flex items-center border border-slate-300 bg-white rounded overflow-hidden h-9">
+                          <button
+                            onClick={() => updateProductQty(p.mpn, -p.moq, p.moq)}
+                            disabled={currentQty <= p.moq}
+                            className="px-2.5 text-slate-600 hover:bg-slate-100 disabled:opacity-30 h-full cursor-pointer"
+                          >
+                            <Minus className="h-3.5 w-3.5" />
+                          </button>
+                          <span className="px-2 font-mono text-xs font-bold text-slate-800 min-w-7 text-center select-none">
+                            {currentQty}
+                          </span>
+                          <button
+                            onClick={() => updateProductQty(p.mpn, p.moq, p.moq)}
+                            className="px-2.5 text-slate-600 hover:bg-slate-100 h-full cursor-pointer"
+                          >
+                            <Plus className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex items-center gap-1.5 flex-1 justify-end">
+                          <button
+                            type="button"
+                            onClick={() => setQuickViewProduct(p)}
+                            className="px-2.5 py-2 border border-slate-300 bg-white text-slate-700 text-xs font-bold rounded flex items-center gap-1 hover:bg-slate-50 cursor-pointer"
+                            title="Pinout & Specs"
+                          >
+                            <Eye className="h-3.5 w-3.5 text-slate-500" />
+                            <span className="hidden xs:inline">Specs</span>
+                          </button>
+
+                          <button
+                            onClick={() => handleAddRfqWithFeedback(p, currentQty)}
+                            className={`px-3 py-2 text-xs font-bold rounded flex items-center gap-1 transition-all cursor-pointer ${
+                              addedMpn === p.mpn
+                                ? "bg-emerald-600 text-white"
+                                : "bg-[#002855] text-white hover:bg-[#001D3D]"
+                            }`}
+                          >
+                            {addedMpn === p.mpn ? (
+                              <>
+                                <Check className="h-3.5 w-3.5" />
+                                <span>Added</span>
+                              </>
+                            ) : (
+                              <>
+                                <Plus className="h-3.5 w-3.5" />
+                                <span>RFQ</span>
+                              </>
+                            )}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => startDirectCheckout(p, currentQty)}
+                            className="px-3 py-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded flex items-center gap-1 shadow-xs cursor-pointer"
+                          >
+                            <CreditCard className="h-3.5 w-3.5" />
+                            <span>Buy</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
           );
         })()}
       </div>

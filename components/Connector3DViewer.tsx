@@ -533,7 +533,7 @@ export function Connector3DViewer({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onWheel={handleWheel}
-        className="w-full h-72 sm:h-80 cursor-grab active:cursor-grabbing touch-none flex items-center justify-center relative"
+        className="w-full h-56 sm:h-72 md:h-80 cursor-grab active:cursor-grabbing touch-none flex items-center justify-center relative"
       />
 
       {/* Top Floating Badge & Status */}
@@ -551,14 +551,14 @@ export function Connector3DViewer({
       </div>
 
       {/* Interaction Help Hint */}
-      <div className="absolute bottom-11 left-3 pointer-events-none">
+      <div className="absolute bottom-11 left-3 pointer-events-none hidden sm:block">
         <span className="text-[10px] text-slate-400/90 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-2xs font-sans">
           🖱️ Drag to rotate 360° • Scroll to zoom
         </span>
       </div>
 
       {/* Bottom Interactive Toolbar Controls */}
-      <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-1.5 bg-slate-900/95 backdrop-blur-md p-1.5 border border-slate-800 rounded-2xs text-[11px]">
+      <div className="absolute bottom-2 left-1.5 right-1.5 sm:left-2 sm:right-2 flex items-center justify-between gap-1 sm:gap-1.5 bg-slate-900/95 backdrop-blur-md p-1 sm:p-1.5 border border-slate-800 rounded-2xs text-[10px] sm:text-[11px]">
         {/* Preset Angles */}
         <div className="flex items-center gap-1">
           <button

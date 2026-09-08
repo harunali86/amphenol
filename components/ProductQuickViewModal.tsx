@@ -194,13 +194,13 @@ export function ProductQuickViewModal() {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between border-b border-slate-200 bg-[#001435] text-white px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-slate-200 bg-[#001435] text-white px-3 sm:px-5 py-3 sm:py-3.5">
           <div className="flex items-center gap-3">
             <span className="text-[10px] font-bold uppercase tracking-wider text-blue-300 bg-blue-500/20 border border-blue-400/30 px-2 py-0.5 rounded-2xs">
               {product.category}
             </span>
-            <div className="flex items-center gap-1.5 font-mono text-base sm:text-lg font-black text-amber-300">
-              <span>{product.mpn}</span>
+            <div className="flex items-center gap-1.5 font-mono text-sm sm:text-base md:text-lg font-black text-amber-300 min-w-0">
+              <span className="truncate">{product.mpn}</span>
               <button
                 onClick={handleCopyMpn}
                 title="Copy Part Number"
@@ -313,7 +313,7 @@ export function ProductQuickViewModal() {
                     +100% Domestic GST Credit
                   </span>
                 </div>
-                <div className="grid grid-cols-4 divide-x divide-slate-200 text-center bg-white">
+                <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-200 text-center bg-white">
                   {volumeTiers.map((t, idx) => (
                     <div key={idx} className="p-2.5 hover:bg-blue-50/50 transition-colors">
                       <span className="text-[10px] font-bold text-slate-500 uppercase block font-mono">
@@ -407,10 +407,10 @@ export function ProductQuickViewModal() {
                 </div>
 
                 {/* Primary & Secondary Action Buttons */}
-                <div className="flex flex-wrap items-center gap-2.5">
+                <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-2.5">
                   <button
                     onClick={handleAddRfq}
-                    className={`flex-1 py-2.5 px-4 text-xs font-bold transition-all shadow-md rounded-xs flex items-center justify-center gap-2 cursor-pointer active:scale-98 ${
+                    className={`col-span-2 sm:flex-1 py-2.5 px-4 text-xs font-bold transition-all shadow-md rounded-xs flex items-center justify-center gap-2 cursor-pointer active:scale-98 ${
                       addedFeedback
                         ? "bg-emerald-600 text-white scale-102 shadow-emerald-500/30"
                         : "bg-[#002855] hover:bg-[#001D3D] text-white"
