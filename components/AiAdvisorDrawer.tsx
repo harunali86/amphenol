@@ -35,7 +35,7 @@ export function AiAdvisorDrawer() {
     {
       id: "msg-welcome",
       sender: "ai",
-      text: "Hello! I am the **Amphenol Technical AI Copilot**, powered by Google Gemini and grounded in 15,000+ Amphenol Mil-Spec and industrial interconnect SKUs.\n\nAsk me about:\n- **Mil-Spec circular connectors** (MIL-DTL-38999 Series III, 2M, 26482, 83723)\n- **High Voltage EV Powertrain** solutions (up to 1000V DC / 250A with RadSok)\n- **Direct Cross-References** for TE Connectivity, Souriau, and Deutsch part numbers\n- **Tactical Rugged Ethernet** & Subsea IP68/IP69K solutions\n\nHow can I assist your engineering project today?",
+      text: "Hello! I am the **Amphenol Technical AI Copilot**, powered by the **Amphenol Interconnect Intelligence Engine** and grounded in 15,000+ Mil-Spec, Aerospace, and EV interconnect solutions.\n\nAsk me about:\n- **Mil-Spec circular connectors** (MIL-DTL-38999 Series III, 2M, 26482, 83723)\n- **High Voltage EV Powertrain** solutions (up to 1000V DC / 250A with RadSok)\n- **Direct Cross-References** for TE Connectivity, Souriau, and Deutsch part numbers\n- **Tactical Rugged Ethernet** & Subsea IP68/IP69K solutions\n\nHow can I assist your engineering project today?",
       timestamp: "Just now",
       source: "gemini-ai",
     },
@@ -224,7 +224,7 @@ export function AiAdvisorDrawer() {
                 <Sparkles className="h-3.5 w-3.5 text-amber-300 animate-spin" style={{ animationDuration: "6s" }} />
               </div>
               <p className="text-[10px] text-blue-200 hidden sm:block">
-                Gemini AI • 15k SKUs Grounded
+                Interconnect AI • 15,000 SKUs Grounded
               </p>
             </div>
           </button>
@@ -255,7 +255,7 @@ export function AiAdvisorDrawer() {
                   </div>
                   <p className="text-[11px] text-blue-200 flex items-center gap-1.5">
                     <Cpu className="h-3 w-3 text-emerald-300" />
-                    Powered by Google Gemini 3.6 • Pune Central Hub
+                    Amphenol Interconnect Intelligence Engine • Pune R&D Hub
                   </p>
                 </div>
               </div>
@@ -315,7 +315,7 @@ export function AiAdvisorDrawer() {
                       <div>{renderFormattedContent(m.text)}</div>
                       <div className="mt-2 flex items-center justify-between text-[10px] opacity-70">
                         <span>
-                          {m.source === "gemini-ai" && "⚡ Gemini Flash"}
+                          {m.source === "gemini-ai" && "⚡ Amphenol AI Grounded"}
                         </span>
                         <span>{m.timestamp}</span>
                       </div>
