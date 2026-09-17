@@ -300,6 +300,42 @@ export function ExecutiveOverview() {
         </div>
       </div>
 
+      {/* 🚀 DEFENSE & TIER-1 OEM STRATEGIC PROGRAMS BANNER */}
+      <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="space-y-0.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Verified Tier-1 Interconnect Supplier For Indian Mission-Critical Programs
+            </span>
+            <div className="text-xs text-slate-600 dark:text-slate-300">
+              Direct Bhosari plant procurement channel for authorized defense labs, aerospace primes, and commercial EV manufacturers:
+            </div>
+          </div>
+
+          {/* Strategic Program Badges */}
+          <div className="flex flex-wrap items-center gap-2">
+            {[
+              { name: "DRDO Labs", type: "Defense R&D" },
+              { name: "HAL Aerospace", type: "Tejas & Rotors" },
+              { name: "Indian Navy", type: "Project 75I Subsea" },
+              { name: "ISRO Space", type: "Launch Vehicles" },
+              { name: "Tata Motors EV", type: "800V Powertrain" },
+              { name: "Mahindra Electric", type: "EV Battery Systems" },
+            ].map((p, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 shadow-2xs"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+                <span>{p.name}</span>
+                <span className="text-[9px] font-normal text-slate-500 dark:text-slate-400">({p.type})</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* 2. OFFICIAL MARKET SEGMENTS (Real Aerospace & Defense Photography from amphenol-in.com) */}
       <div>
         <div className="flex items-center justify-between border-b border-slate-300 pb-3 mb-5">

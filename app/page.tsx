@@ -15,6 +15,7 @@ import { ProductCompareDock } from "@/components/ProductCompareDock";
 import { ProductCompareModal } from "@/components/ProductCompareModal";
 import { DirectCheckoutModal } from "@/components/DirectCheckoutModal";
 import { OrderTrackingModal } from "@/components/OrderTrackingModal";
+import { AdminCrmModal } from "@/components/AdminCrmModal";
 import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
@@ -42,6 +43,7 @@ export default function HomePage() {
       <ProductCompareDock />
       <DirectCheckoutModal />
       <OrderTrackingModal />
+      <AdminCrmModal />
 
       {/* Global Footer */}
       <Footer />

@@ -18,6 +18,7 @@ import {
   ArrowRight,
   CreditCard,
   MapPin,
+  Building2,
 } from "lucide-react";
 
 export function Navbar() {
@@ -32,6 +33,7 @@ export function Navbar() {
     setActiveTab,
     startDirectCheckout,
     openTracking,
+    setIsAdminOpen,
   } = useRfq();
 
   const [inStockOnly, setInStockOnly] = useState(true);
@@ -93,6 +95,16 @@ export function Navbar() {
               <MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />
               <span>Track Order</span>
             </span>
+            <span className="text-slate-600">|</span>
+            <button
+              onClick={() => setIsAdminOpen(true)}
+              className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-2.5 py-0.5 text-[10px] font-bold text-white shadow-xs hover:from-blue-500 hover:to-indigo-500 transition-all border border-blue-400/40"
+              title="Open Enterprise Staff Portal & Live CRM Dashboard (5 Roles)"
+            >
+              <Building2 className="h-3 w-3 text-blue-200" />
+              <span>Staff Portal &amp; CRM</span>
+              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            </button>
             <span className="text-slate-600">|</span>
             <span className="text-white font-semibold flex items-center gap-1 cursor-default">
               <span>🇮🇳</span>

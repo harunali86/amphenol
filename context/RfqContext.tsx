@@ -46,6 +46,10 @@ interface RfqContextType {
   trackingOrderId: string;
   setTrackingOrderId: (id: string) => void;
   openTracking: (orderId?: string) => void;
+  isAdminOpen: boolean;
+  setIsAdminOpen: (open: boolean) => void;
+  crmToast: string | null;
+  triggerCrmToast: (msg: string) => void;
 }
 
 const RfqContext = createContext<RfqContextType | undefined>(undefined);
@@ -62,7 +66,16 @@ export function RfqProvider({ children }: { children: React.ReactNode }) {
   const [checkoutProduct, setCheckoutProduct] = useState<{ product: Product; quantity: number } | null>(null);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
   const [trackingOrderId, setTrackingOrderId] = useState("AMP-ORD-2026-9841");
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [crmToast, setCrmToast] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"overview" | "catalog" | "configurator" | "bom">("overview");
+
+  const triggerCrmToast = (msg: string) => {
+    setCrmToast(msg);
+    setTimeout(() => {
+      setCrmToast(null);
+    }, 4500);
+  };
 
   const openTracking = (orderId?: string) => {
     if (orderId) setTrackingOrderId(orderId);
@@ -154,6 +167,7 @@ export function RfqProvider({ children }: { children: React.ReactNode }) {
         ];
       }
     });
+    triggerCrmToast(`Synced to Pune Central CRM • Lead ID: #RFQ-2026-${Math.floor(100 + Math.random() * 900)}`);
   };
 
   const removeFromRfq = (id: string) => {
@@ -219,8 +233,22 @@ export function RfqProvider({ children }: { children: React.ReactNode }) {
         trackingOrderId,
         setTrackingOrderId,
         openTracking,
+        isAdminOpen,
+        setIsAdminOpen,
+        crmToast,
+        triggerCrmToast,
       }}
     >
+      {/* 🚀 Global Floating CRM Telemetry Notification Banner */}
+      {crmToast && (
+        <div className="fixed top-14 right-4 sm:right-8 z-50 animate-bounce">
+          <div className="flex items-center gap-2.5 rounded-xl border border-blue-400/40 bg-slate-900/95 text-white px-4 py-2.5 shadow-2xl backdrop-blur-md text-xs">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="font-semibold text-blue-300">⚡ Live Telemetry:</span>
+            <span className="font-medium text-slate-200">{crmToast}</span>
+          </div>
+        </div>
+      )}
       {children}
     </RfqContext.Provider>
   );
