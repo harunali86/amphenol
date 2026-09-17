@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRfq } from "@/context/RfqContext";
 import {
   Search,
@@ -96,15 +97,15 @@ export function Navbar() {
               <span>Track Order</span>
             </span>
             <span className="text-slate-600">|</span>
-            <button
-              onClick={() => setIsAdminOpen(true)}
+            <Link
+              href="/admin"
               className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-2.5 py-0.5 text-[10px] font-bold text-white shadow-xs hover:from-blue-500 hover:to-indigo-500 transition-all border border-blue-400/40"
-              title="Open Enterprise Staff Portal & Live CRM Dashboard (5 Roles)"
+              title="Open Enterprise Staff Portal & Live CRM Dashboard"
             >
               <Building2 className="h-3 w-3 text-blue-200" />
               <span>Staff Portal &amp; CRM</span>
               <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            </button>
+            </Link>
             <span className="text-slate-600">|</span>
             <span className="text-white font-semibold flex items-center gap-1 cursor-default">
               <span>🇮🇳</span>
