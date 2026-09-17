@@ -815,6 +815,176 @@ export default function CleanAdminDashboardPage() {
                 </div>
               </div>
 
+              {/* ========================================================== */}
+              {/* 3. FULL-WIDTH PROMINENT B2B ORDER VELOCITY ANALYTICS GRAPH */}
+              {/* ========================================================== */}
+              <div className="p-6 rounded-xl bg-[#0c1322] border border-slate-800 space-y-4 shadow-lg">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+                  <div>
+                    <h3 className="text-base font-bold text-white flex items-center gap-2">
+                      <TrendingUp className="w-5 h-5 text-blue-400" />
+                      <span>B2B Order Velocity &amp; Monthly Revenue Trajectory</span>
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Multi-month comparison of Inbound Defense RFQs vs Confirmed Plant Dispatches
+                    </p>
+                  </div>
+
+                  {/* Chart Legend & Filter */}
+                  <div className="flex flex-wrap items-center gap-4 text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50"></span>
+                      <span className="text-slate-300 font-medium">Inbound RFQ Pipeline</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
+                      <span className="text-slate-300 font-medium">Confirmed Dispatches</span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded bg-slate-900 text-blue-400 font-mono text-[11px] border border-slate-800">
+                      FY26 Q1-Q2
+                    </span>
+                  </div>
+                </div>
+
+                {/* SVG High-Resolution Area Graph */}
+                <div className="relative w-full h-64 sm:h-72 select-none pt-2">
+                  <svg viewBox="0 0 800 240" className="w-full h-full overflow-visible">
+                    <defs>
+                      {/* Gradient for Inbound RFQ Wave (Blue) */}
+                      <linearGradient id="blueWave" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.45" />
+                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                      </linearGradient>
+                      {/* Gradient for Dispatches Wave (Emerald) */}
+                      <linearGradient id="greenWave" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10b981" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Horizontal Dashed Grid Lines & Y-Axis Labels */}
+                    <g className="text-[10px] fill-slate-500 font-mono">
+                      {/* ₹1.2 Cr Line */}
+                      <line x1="60" y1="20" x2="780" y2="20" stroke="#1e293b" strokeDasharray="4 4" strokeWidth="1" />
+                      <text x="50" y="24" textAnchor="end">₹1.2 Cr</text>
+
+                      {/* ₹90 Lakh Line */}
+                      <line x1="60" y1="65" x2="780" y2="65" stroke="#1e293b" strokeDasharray="4 4" strokeWidth="1" />
+                      <text x="50" y="69" textAnchor="end">₹90 L</text>
+
+                      {/* ₹60 Lakh Line */}
+                      <line x1="60" y1="110" x2="780" y2="110" stroke="#1e293b" strokeDasharray="4 4" strokeWidth="1" />
+                      <text x="50" y="114" textAnchor="end">₹60 L</text>
+
+                      {/* ₹30 Lakh Line */}
+                      <line x1="60" y1="155" x2="780" y2="155" stroke="#1e293b" strokeDasharray="4 4" strokeWidth="1" />
+                      <text x="50" y="159" textAnchor="end">₹30 L</text>
+
+                      {/* Base Line */}
+                      <line x1="60" y1="200" x2="780" y2="200" stroke="#334155" strokeWidth="1.5" />
+                      <text x="50" y="204" textAnchor="end">₹0</text>
+                    </g>
+
+                    {/* Area 1: Inbound RFQ Wave (Blue Area) */}
+                    {/* Points: Apr(80, 122), May(220, 98), Jun(360, 108), Jul(500, 74), Aug(640, 56), Sep(760, 20) */}
+                    <path
+                      d="M 80 122 Q 150 110, 220 98 T 360 108 T 500 74 T 640 56 T 760 20 L 760 200 L 80 200 Z"
+                      fill="url(#blueWave)"
+                    />
+                    {/* Stroke Line for Inbound RFQs */}
+                    <path
+                      d="M 80 122 Q 150 110, 220 98 T 360 108 T 500 74 T 640 56 T 760 20"
+                      fill="none"
+                      stroke="#3b82f6"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                    />
+
+                    {/* Area 2: Completed Dispatches (Emerald Area) */}
+                    {/* Points: Apr(80, 148), May(220, 126), Jun(360, 134), Jul(500, 102), Aug(640, 80), Sep(760, 52) */}
+                    <path
+                      d="M 80 148 Q 150 137, 220 126 T 360 134 T 500 102 T 640 80 T 760 52 L 760 200 L 80 200 Z"
+                      fill="url(#greenWave)"
+                    />
+                    {/* Stroke Line for Dispatches */}
+                    <path
+                      d="M 80 148 Q 150 137, 220 126 T 360 134 T 500 102 T 640 80 T 760 52"
+                      fill="none"
+                      stroke="#10b981"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="2 0"
+                    />
+
+                    {/* Milestone Glowing Dots & Labels on Inbound Line */}
+                    {/* Apr Dot */}
+                    <circle cx="80" cy="122" r="5" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                    {/* May Dot */}
+                    <circle cx="220" cy="98" r="5" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                    {/* Jun Dot */}
+                    <circle cx="360" cy="108" r="5" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                    {/* Jul Dot (Tata EV Surge) */}
+                    <circle cx="500" cy="74" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2.5" />
+                    {/* Aug Dot (DRDO Batch) */}
+                    <circle cx="640" cy="56" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2.5" />
+                    {/* Sep Dot (Mega Peak HAL ₹1.2 Cr) */}
+                    <circle cx="760" cy="20" r="7" fill="#60a5fa" stroke="#ffffff" strokeWidth="3" className="animate-pulse" />
+
+                    {/* Value Floating Badges */}
+                    <g className="text-[10px] font-mono font-bold fill-white">
+                      <rect x="62" y="96" width="36" height="18" rx="4" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+                      <text x="80" y="109" textAnchor="middle">₹52L</text>
+
+                      <rect x="202" y="72" width="36" height="18" rx="4" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+                      <text x="220" y="85" textAnchor="middle">₹68L</text>
+
+                      <rect x="342" y="82" width="36" height="18" rx="4" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+                      <text x="360" y="95" textAnchor="middle">₹61L</text>
+
+                      <rect x="480" y="48" width="40" height="18" rx="4" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+                      <text x="500" y="61" textAnchor="middle">₹84L</text>
+
+                      <rect x="620" y="30" width="40" height="18" rx="4" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+                      <text x="640" y="43" textAnchor="middle">₹96L</text>
+
+                      {/* Peak Badge */}
+                      <rect x="732" y="-6" width="56" height="20" rx="4" fill="#2563eb" stroke="#ffffff" strokeWidth="1.5" />
+                      <text x="760" y="8" textAnchor="middle" fill="#ffffff">₹1.20 Cr</text>
+                    </g>
+
+                    {/* X-Axis Month Labels */}
+                    <g className="text-xs font-semibold fill-slate-300">
+                      <text x="80" y="224" textAnchor="middle">Apr 2026</text>
+                      <text x="220" y="224" textAnchor="middle">May 2026</text>
+                      <text x="360" y="224" textAnchor="middle">Jun 2026</text>
+                      <text x="500" y="224" textAnchor="middle">Jul 2026 (Tata EV)</text>
+                      <text x="640" y="224" textAnchor="middle">Aug 2026 (DRDO)</text>
+                      <text x="760" y="224" textAnchor="middle" fill="#60a5fa" className="font-bold">Sep (HAL Peak)</text>
+                    </g>
+                  </svg>
+                </div>
+
+                {/* Graph Footer Metric Badges */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-800/80 text-xs">
+                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span className="text-slate-400 text-[10px] uppercase">Quarterly Peak Inflow</span>
+                    <div className="font-mono font-bold text-white text-sm mt-0.5">₹1.20 Crore (Sep)</div>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span className="text-slate-400 text-[10px] uppercase">6-Month Inbound Growth</span>
+                    <div className="font-mono font-bold text-emerald-400 text-sm mt-0.5">+130.7% Surge</div>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span className="text-slate-400 text-[10px] uppercase">B2B Conversion Rate</span>
+                    <div className="font-mono font-bold text-blue-400 text-sm mt-0.5">78.4% Won Tenders</div>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span className="text-slate-400 text-[10px] uppercase">Factory Dispatch Rate</span>
+                    <div className="font-mono font-bold text-indigo-300 text-sm mt-0.5">99.4% On-Schedule</div>
+                  </div>
+                </div>
+              </div>
+
               {/* Clean Recent Leads Table */}
               <div className="rounded-xl bg-[#0c1322] border border-slate-800 overflow-hidden">
                 <div className="p-4 border-b border-slate-800 flex items-center justify-between">
