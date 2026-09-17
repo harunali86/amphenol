@@ -606,6 +606,215 @@ export default function CleanAdminDashboardPage() {
                 </div>
               </div>
 
+              {/* ========================================================== */}
+              {/* CIRCULAR REPORTS & VISUAL GRAPHS SECTION */}
+              {/* ========================================================== */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                {/* 1. CIRCULAR DONUT CHART: SECTOR REVENUE SHARE */}
+                <div className="lg:col-span-5 p-5 rounded-xl bg-[#0c1322] border border-slate-800 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                        <span>Circular Pipeline Report (Revenue by Sector)</span>
+                      </h3>
+                      <p className="text-[11px] text-slate-400">Consolidated share across active ₹4.82 Cr orders</p>
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      FY 2026-27
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-2">
+                    {/* SVG Donut Chart with Center Total */}
+                    <div className="relative w-40 h-40 shrink-0">
+                      <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                        {/* Background Ring */}
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="#1e293b" strokeWidth="12" />
+                        {/* Defense: 58% -> strokeDasharray="138 238" */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="38"
+                          fill="none"
+                          stroke="#3b82f6"
+                          strokeWidth="12"
+                          strokeDasharray="138 238"
+                          strokeDashoffset="0"
+                          className="transition-all duration-1000"
+                        />
+                        {/* Automotive EV: 24% -> strokeDasharray="57 238" */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="38"
+                          fill="none"
+                          stroke="#10b981"
+                          strokeWidth="12"
+                          strokeDasharray="57 238"
+                          strokeDashoffset="-138"
+                          className="transition-all duration-1000"
+                        />
+                        {/* Aerospace: 12% -> strokeDasharray="28 238" */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="38"
+                          fill="none"
+                          stroke="#8b5cf6"
+                          strokeWidth="12"
+                          strokeDasharray="28 238"
+                          strokeDashoffset="-195"
+                          className="transition-all duration-1000"
+                        />
+                        {/* Naval: 6% -> strokeDasharray="15 238" */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="38"
+                          fill="none"
+                          stroke="#f59e0b"
+                          strokeWidth="12"
+                          strokeDasharray="15 238"
+                          strokeDashoffset="-223"
+                          className="transition-all duration-1000"
+                        />
+                      </svg>
+                      {/* Center Content */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <span className="text-[10px] text-slate-400 uppercase tracking-wider">Total</span>
+                        <span className="text-base font-mono font-bold text-white tracking-tight">₹4.82 Cr</span>
+                        <span className="text-[9px] text-emerald-400">38 Accounts</span>
+                      </div>
+                    </div>
+
+                    {/* Donut Legend */}
+                    <div className="space-y-2.5 w-full text-xs">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                          <span className="text-slate-300">Defense (DRDO/HAL)</span>
+                        </div>
+                        <span className="font-mono font-bold text-white">58% <span className="text-slate-500 text-[10px]">(₹2.80 Cr)</span></span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                          <span className="text-slate-300">Automotive EV</span>
+                        </div>
+                        <span className="font-mono font-bold text-white">24% <span className="text-slate-500 text-[10px]">(₹1.15 Cr)</span></span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                          <span className="text-slate-300">Aerospace Avionics</span>
+                        </div>
+                        <span className="font-mono font-bold text-white">12% <span className="text-slate-500 text-[10px]">(₹58 Lakh)</span></span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                          <span className="text-slate-300">Naval Submarine</span>
+                        </div>
+                        <span className="font-mono font-bold text-white">6% <span className="text-slate-500 text-[10px]">(₹29 Lakh)</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. CIRCULAR RADIAL GAUGES & MONTHLY VELOCITY TREND */}
+                <div className="lg:col-span-7 p-5 rounded-xl bg-[#0c1322] border border-slate-800 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-white">Pune Plant Health &amp; Monthly Growth Trend</h3>
+                      <p className="text-[11px] text-slate-400">Radial operational meters &amp; monthly order velocity</p>
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      SLA: Optimal
+                    </span>
+                  </div>
+
+                  {/* 3 Circular Radial Gauges */}
+                  <div className="grid grid-cols-3 gap-3 py-1">
+                    {/* Gauge 1: Dispatch SLA */}
+                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+                      <div className="relative w-16 h-16">
+                        <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" strokeWidth="3" />
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#10b981" strokeWidth="3" strokeDasharray="99.4, 100" />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center font-mono font-bold text-xs text-white">
+                          99.4%
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-medium text-slate-200 mt-2">On-Time Dispatch</span>
+                      <span className="text-[9px] text-emerald-400">BlueDart SLA</span>
+                    </div>
+
+                    {/* Gauge 2: CNC Machining Capacity */}
+                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+                      <div className="relative w-16 h-16">
+                        <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" strokeWidth="3" />
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#3b82f6" strokeWidth="3" strokeDasharray="92, 100" />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center font-mono font-bold text-xs text-white">
+                          92.0%
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-medium text-slate-200 mt-2">Plant CNC Load</span>
+                      <span className="text-[9px] text-blue-400">Bhosari Bays 1-3</span>
+                    </div>
+
+                    {/* Gauge 3: MIL-STD QA Pass */}
+                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+                      <div className="relative w-16 h-16">
+                        <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" strokeWidth="3" />
+                          <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#8b5cf6" strokeWidth="3" strokeDasharray="99.8, 100" />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center font-mono font-bold text-xs text-white">
+                          99.8%
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-medium text-slate-200 mt-2">QA Test Yield</span>
+                      <span className="text-[9px] text-purple-400">AS9100D Labs</span>
+                    </div>
+                  </div>
+
+                  {/* Monthly Trend Bar Visuals */}
+                  <div className="pt-2 border-t border-slate-800/80">
+                    <div className="flex justify-between text-[11px] text-slate-400 mb-2">
+                      <span>Monthly Inbound RFQ Velocity (Apr - Sep 2026)</span>
+                      <span className="font-mono text-emerald-400">Avg ₹80.4L / month</span>
+                    </div>
+                    <div className="grid grid-cols-6 gap-2 items-end h-16 pt-2">
+                      {[
+                        { month: "Apr", val: "45%", amt: "₹52L" },
+                        { month: "May", val: "60%", amt: "₹68L" },
+                        { month: "Jun", val: "55%", amt: "₹61L" },
+                        { month: "Jul", val: "75%", amt: "₹84L" },
+                        { month: "Aug", val: "85%", amt: "₹96L" },
+                        { month: "Sep", val: "100%", amt: "₹1.2Cr" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col items-center gap-1 h-full justify-end group">
+                          <span className="text-[9px] font-mono text-slate-500 group-hover:text-white transition-colors">{item.amt}</span>
+                          <div className="w-full bg-slate-800 rounded-t overflow-hidden h-full flex items-end">
+                            <div
+                              className="w-full bg-gradient-to-t from-blue-600 to-indigo-500 rounded-t group-hover:from-blue-500 group-hover:to-emerald-400 transition-all"
+                              style={{ height: item.val }}
+                            ></div>
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-mono">{item.month}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Clean Recent Leads Table */}
               <div className="rounded-xl bg-[#0c1322] border border-slate-800 overflow-hidden">
                 <div className="p-4 border-b border-slate-800 flex items-center justify-between">
